@@ -1,0 +1,16 @@
+take/eclipse/*
+take/jboss-6.0.0.Final/*
+take/jdk/*
+take/projekty.pdf
+take/start_eclipse.bat
+take/start_jboss.bat
+take/TAKE_wprow.pdf
+take/Tworzenie Aplikacji Klasy Enterprise.pdf
+#*.gitignore
+
+!/take/workspace
+take/workspace/*
+!/take/workspace/take/
+/take/workspace/take/*
+!/take/workspace/take/src
+!/take/workspace/takeclient/src
