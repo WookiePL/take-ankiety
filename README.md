@@ -12,5 +12,5 @@
 Tera możesz już se opalić jbossa i deplojować i gitara
 ### Kodzimy !
 
-#### Inne info
+### Inne info
 ankiety.EAP - diagram klas dla naszego projektu
