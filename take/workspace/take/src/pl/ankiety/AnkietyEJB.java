@@ -10,14 +10,18 @@ import javax.persistence.Query;
 import pl.kurs.komis.Car;
 
 @Stateless
-public class WykladowcaEJB {
+public class AnkietyEJB {
 
-	@PersistenceContext(name="wykladowca")
+	@PersistenceContext(name="ankiety")
 	EntityManager manager;
 	
 	public void createWykladowca(Wykladowca wykladowca) {
 		manager.persist(wykladowca);
 		System.out.println("Utworzono wykladowce");
+	}
+	
+	public Wykladowca findWykladowca(int idw) {
+		return manager.find(Wykladowca.class, idw);
 	}
 	
 	public void deleteWykladowca(int idw) {

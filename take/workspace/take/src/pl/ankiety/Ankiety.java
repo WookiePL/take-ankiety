@@ -7,10 +7,14 @@ import javax.ejb.Local;
 @Local
 public interface Ankiety {
 	
+/*****************************************************************************************	
+ * Wykladowca
+ ****************************************************************************************/
+	
 	public abstract String createWykladowca(String imieNazwisko);
 	//public abstract String createWykladowca(InputStream is);
 
-	//public abstract String findWykladowca(int idc);
+	public abstract String findWykladowca(int idc);
 
 	public abstract String getWykladowca();
 

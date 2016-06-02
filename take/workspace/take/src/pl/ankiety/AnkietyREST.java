@@ -15,8 +15,12 @@ import javax.xml.bind.JAXB;
 public class AnkietyREST implements Ankiety {
 
 	@EJB
-	WykladowcaEJB bean;
+	AnkietyEJB bean;
 	
+/*****************************************************************************************	
+ * Wykladowca
+ ****************************************************************************************/
+ 
 	@Override
 	@GET
 	@Path("/createWykladowca/{imieNazwisko}")
@@ -25,6 +29,13 @@ public class AnkietyREST implements Ankiety {
 		wykladowca.setImieNazwisko(imieNazwisko);
 		bean.createWykladowca(wykladowca);
 		return "dodano wykladowce";
+	}
+	
+	@Override
+	@GET
+	@Path("/findWykladowca/{imieNazwisko}")
+	public String findWykladowca(@PathParam("idw") int idw) {
+		Wykladowca wykladowca = bean.findWykladowca(idw);
 	}
 	
 	@Override

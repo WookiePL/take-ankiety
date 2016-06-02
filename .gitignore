@@ -14,3 +14,4 @@ take/workspace/*
 /take/workspace/take/*
 !/take/workspace/take/src
 !/take/workspace/takeclient/src
+!/take/workspace/take/WebContent/*
