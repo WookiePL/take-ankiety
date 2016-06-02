@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="X:\take-ankiety\take\jdk" version="1.7.0_51">
+<bootpath>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\resources.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\rt.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\sunrsasign.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\jsse.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\jce.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\charsets.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\jfr.jar"/>
+<entry path="X:\take-ankiety\take\jdk\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="X:\take-ankiety\take\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="X:\take\jdk" version="1.7.0_51">
+<bootpath>
+<entry path="X:\take\jdk\jre\lib\resources.jar"/>
+<entry path="X:\take\jdk\jre\lib\rt.jar"/>
+<entry path="X:\take\jdk\jre\lib\sunrsasign.jar"/>
+<entry path="X:\take\jdk\jre\lib\jsse.jar"/>
+<entry path="X:\take\jdk\jre\lib\jce.jar"/>
+<entry path="X:\take\jdk\jre\lib\charsets.jar"/>
+<entry path="X:\take\jdk\jre\lib\jfr.jar"/>
+<entry path="X:\take\jdk\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="X:\take\jdk\jre\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="X:\take\jdk\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

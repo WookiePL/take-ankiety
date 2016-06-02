@@ -9,9 +9,12 @@ take/Tworzenie Aplikacji Klasy Enterprise.pdf
 #*.gitignore
 
 !/take/workspace
-take/workspace/*
-!/take/workspace/take/
-/take/workspace/take/*
-!/take/workspace/take/src
-!/take/workspace/takeclient/src
-!/take/workspace/take/WebContent/*
+/take/workspace/take/build.xml
+/take/workspace/take/.classpath
+/take/workspace/take/.project
+#take/workspace/*
+#!/take/workspace/take/
+#/take/workspace/take/*
+#!/take/workspace/take/src
+#!/take/workspace/takeclient/src
+#!/take/workspace/take/WebContent/*
