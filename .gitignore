@@ -8,7 +8,7 @@ take/TAKE_wprow.pdf
 take/Tworzenie Aplikacji Klasy Enterprise.pdf
 #*.gitignore
 
-!/take/workspace
+#!/take/workspace
 /take/workspace/take/build.xml
 /take/workspace/take/.classpath
 /take/workspace/take/.project
