@@ -12,10 +12,10 @@ take/Tworzenie Aplikacji Klasy Enterprise.pdf
 /take/workspace/take/build.xml
 /take/workspace/take/.classpath
 /take/workspace/take/.project
-/take/workspace/.metadata/*
-/take/workspace/take/lib/*
-/take/workspace/take/dist/*
-/take/workspace/take/.settings/*
+/take/workspace/.metadata
+/take/workspace/take/lib
+/take/workspace/take/dist
+/take/workspace/take/.settings
 #take/workspace/*
 #!/take/workspace/take/
 #/take/workspace/take/*
