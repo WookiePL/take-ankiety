@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Wykladowca implements Serializable{
+public class Wykladowca implements Serializable {
 	
 	private static final long serialVersionUID = 1L;	
 	int idw;
@@ -21,6 +21,10 @@ public class Wykladowca implements Serializable{
 	@XmlAttribute
 	public int getIdw() {
 		return idw;
+	}
+	
+	public void setIdw(int idw) {
+		this.idw = idw;
 	}
 	
 	public String getImieNazwisko() {
