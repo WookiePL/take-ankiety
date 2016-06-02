@@ -29,11 +29,11 @@ public interface Ankiety {
 	
 	public abstract String createPrzedmiot(String nazwa, int idw);
 
-//	public abstract String findPrzedmiot(int idp);
-//
+	public abstract String findPrzedmiot(int idp);
+
 	public abstract String getPrzedmiot();
-//
-//	public abstract void deletePrzedmiot(int idp);
+
+	public abstract void deletePrzedmiot(int idp);
 	
 	
 }

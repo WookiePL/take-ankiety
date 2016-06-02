@@ -85,4 +85,21 @@ public class AnkietyREST implements Ankiety {
 		JAXB.marshal(przedmioty, sw);
 		return sw.toString();
 	}
+	
+	@Override
+	@GET
+	@Path("/findPrzedmiot/{idp}")
+	public String findPrzedmiot(@PathParam("idp") int idp) {
+		Przedmiot przedmiot = bean.findPrzedmiot(idp);
+		StringWriter sw = new StringWriter();
+		JAXB.marshal(przedmiot, sw);
+		return sw.toString();
+	}
+	
+	@Override
+	@GET
+	@Path("/deletePrzedmiot/{idp}")
+	public void deletePrzedmiot(@PathParam("idp") int idp) {
+		bean.deletePrzedmiot(idp);
+	}
 }
