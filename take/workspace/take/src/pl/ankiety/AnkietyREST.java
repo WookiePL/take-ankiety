@@ -33,9 +33,12 @@ public class AnkietyREST implements Ankiety {
 	
 	@Override
 	@GET
-	@Path("/findWykladowca/{imieNazwisko}")
+	@Path("/findWykladowca/{idw}")
 	public String findWykladowca(@PathParam("idw") int idw) {
 		Wykladowca wykladowca = bean.findWykladowca(idw);
+		StringWriter sw = new StringWriter();
+		JAXB.marshal(wykladowca, sw);
+		return sw.toString();
 	}
 	
 	@Override
@@ -49,4 +52,37 @@ public class AnkietyREST implements Ankiety {
 		return sw.toString();
 	}
 	
+	@Override
+	@GET
+	@Path("/deleteWykladowca/{idw}")
+	public void deleteWykladowca(@PathParam("idw") int idw) {
+		bean.deleteWykladowca(idw);
+	}
+	
+/*****************************************************************************************	
+ * Przedmiot
+ ****************************************************************************************/
+	
+	@Override
+	@GET
+	@Path("/createPrzedmiot/{nazwa}/{idw}")
+	public String createPrzedmiot(@PathParam("nazwa") String nazwa, @PathParam("idw") int idw) {
+		Przedmiot przedmiot = new Przedmiot();
+		przedmiot.setNazwa(nazwa);
+		Wykladowca wykladowca = bean.findWykladowca(idw);
+		przedmiot.setWykladowca(wykladowca);
+		bean.createPrzedmiot(przedmiot);
+		return "dodano przedmiot";
+	}
+	
+	@Override
+	@GET
+	@Path("/getPrzedmiot")
+	public String getPrzedmiot() {
+		List<Przedmiot> lPrzedmiot = bean.getPrzedmiot();
+		StringWriter sw = new StringWriter();
+		Przedmioty przedmioty = new Przedmioty(lPrzedmiot);
+		JAXB.marshal(przedmioty, sw);
+		return sw.toString();
+	}
 }

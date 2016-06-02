@@ -24,6 +24,10 @@ public class Przedmiot implements Serializable {
 		return idp;
 	}
 	
+	public void setIdp(int idp) {
+		this.idp = idp;
+	}
+	
 	public String getNazwa() {
 		return nazwa;
 	}

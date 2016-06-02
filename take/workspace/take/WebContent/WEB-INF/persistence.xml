@@ -6,7 +6,8 @@
 	<persistence-unit name="ankiety">
 		<jta-data-source>java:/DefaultDS</jta-data-source>
 		<class>pl.ankiety.Wykladowca</class>
-
+		<class>pl.ankiety.Przedmiot</class>
+		
 		<properties>
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
