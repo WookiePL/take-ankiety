@@ -14,7 +14,7 @@ take/workspace/*
 !/take/workspace/take/src
 !/take/workspace/takeclient/src
 !/take/workspace/take/WebContent/*
-take/workspace/take/WebContent/persistence.xml
+
 
 
 
