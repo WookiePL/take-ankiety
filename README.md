@@ -14,3 +14,8 @@ Tera możesz już se opalić jbossa i deplojować i gitara
 
 ### Inne info
 ankiety.EAP - diagram klas dla naszego projektu
+
+### Pytania do prowadzącego
+* Jak wysyłać/odbierać JSON zamiast XML?
+* Klient nie działa, dlaczego wpisując jako adres w przeglądarce dostajemyn dane w XML ale jak pobieramy AJAXem to odpowiedź jest pusta?
+* Jak dokładnie mają działać pytania i odpowiedzi

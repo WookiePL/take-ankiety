@@ -1,0 +1,5 @@
+TAKE Pytania:
+
+-jak wysy³aæ/odbieraæ JSON zamiast XML?
+-klient nie dzia³a
+-jak dok³adnie maj¹ dzia³aæ pytania i odpowiedzi
