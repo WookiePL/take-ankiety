@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.xml.bind.JAXB;
 
+
 @Path("/ankiety")
 @Stateless
 public class AnkietyREST implements Ankiety {
