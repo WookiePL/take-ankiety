@@ -36,4 +36,16 @@ public interface Ankiety {
 	public abstract void deletePrzedmiot(int idp);
 	
 	
+/*****************************************************************************************	
+ * MozliwaOdpowiedz
+ ****************************************************************************************/
+	
+	public abstract String createMozliwaOdpowiedz(String tresc);
+
+	public abstract String findMozliwaOdpowiedz(int idm);
+
+	public abstract String getMozliwaOdpowiedz();
+
+	public abstract void deleteMozliwaOdpowiedz(int idm);
+	
 }

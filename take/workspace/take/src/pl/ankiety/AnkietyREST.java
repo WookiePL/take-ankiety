@@ -103,4 +103,47 @@ public class AnkietyREST implements Ankiety {
 	public void deletePrzedmiot(@PathParam("idp") int idp) {
 		bean.deletePrzedmiot(idp);
 	}
+	
+/*****************************************************************************************	
+ * MozliwaOdpowiedz
+ ****************************************************************************************/
+	
+	
+	@Override
+	@GET
+	@Path("/createMozliwaOdpowiedz/{tresc}")
+	public String createMozliwaOdpowiedz(@PathParam("tresc") String tresc) {
+		MozliwaOdpowiedz mozliwaOdpowiedz = new MozliwaOdpowiedz();
+		mozliwaOdpowiedz.setTresc(tresc);
+		bean.createMozliwaOdpowiedz(mozliwaOdpowiedz);
+		return "dodano mozliwa odpowiedz";
+	}
+	
+	@Override
+	@GET
+	@Path("/getMozliwaOdpowiedz")
+	public String getMozliwaOdpowiedz() {
+		List<MozliwaOdpowiedz> lMozliwaOdpowiedz = bean.getMozliwaOdpowiedz();
+		StringWriter sw = new StringWriter();
+		MozliweOdpowiedzi mozliweOdpowiedzi = new MozliweOdpowiedzi(lMozliwaOdpowiedz);
+		JAXB.marshal(mozliweOdpowiedzi, sw);
+		return sw.toString();
+	}
+	
+	@Override
+	@GET
+	@Path("/findMozliwaOdpowiedz/{idm}")
+	public String findMozliwaOdpowiedz(@PathParam("idm") int idm) {
+		MozliwaOdpowiedz mozliwaOdpowiedz = bean.findMozliwaOdpowiedz(idm);
+		StringWriter sw = new StringWriter();
+		JAXB.marshal(mozliwaOdpowiedz, sw);
+		return sw.toString();
+	}
+	
+	@Override
+	@GET
+	@Path("/deleteMozliwaOdpowiedz/{idm}")
+	public void deleteMozliwaOdpowiedz(@PathParam("idm") int idm) {
+		bean.deleteMozliwaOdpowiedz(idm);
+	}
 }

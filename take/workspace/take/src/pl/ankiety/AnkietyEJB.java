@@ -80,4 +80,37 @@ public class AnkietyEJB {
 		System.out.println("Usunieto przedmiot");
 	}
 	
+/*****************************************************************************************	
+ * MozliwaOdpowiedz
+ ****************************************************************************************/
+	
+	public void createMozliwaOdpowiedz(MozliwaOdpowiedz mozliwaOdpowiedz) {
+		manager.persist(mozliwaOdpowiedz);
+		System.out.println("Utworzono mozliwa odpowiedz");
+	}
+	
+	public MozliwaOdpowiedz findMozliwaOdpowiedz(int idm) {
+		System.out.println("Wyszukano mozliwa odpowiedz");
+		return manager.find(MozliwaOdpowiedz.class, idm);
+	}
+	
+	public List<MozliwaOdpowiedz> getMozliwaOdpowiedz() {
+		Query q = manager.createQuery("select m from MozliwaOdpowiedz m");
+		@SuppressWarnings("unchecked")
+		List<MozliwaOdpowiedz> list = q.getResultList();
+		System.out.println("Zwrocono mozliwe odpowiedzi");
+		return list;
+	}
+	
+	public void updateMozliwaOdpowiedz(MozliwaOdpowiedz mozliwaOdpowiedz) {
+		mozliwaOdpowiedz = manager.merge(mozliwaOdpowiedz);
+		System.out.println("Aktualizowano mozliwa odpowiedz");
+	}
+	
+	public void deleteMozliwaOdpowiedz(int idm) {
+		MozliwaOdpowiedz mozliwaOdpowiedz = manager.find(MozliwaOdpowiedz.class, idm);
+		manager.remove(mozliwaOdpowiedz);
+		System.out.println("Usunieto mozliwa odpowiedz");
+	}
+	
 }
