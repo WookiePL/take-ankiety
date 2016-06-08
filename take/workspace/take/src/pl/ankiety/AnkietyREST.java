@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.xml.bind.JAXB;
 
 
@@ -35,22 +36,20 @@ public class AnkietyREST implements Ankiety {
 	@Override
 	@GET
 	@Path("/findWykladowca/{idw}")
-	public String findWykladowca(@PathParam("idw") int idw) {
+	@Produces("application/json")
+	public Wykladowca findWykladowca(@PathParam("idw") int idw) {
 		Wykladowca wykladowca = bean.findWykladowca(idw);
-		StringWriter sw = new StringWriter();
-		JAXB.marshal(wykladowca, sw);
-		return sw.toString();
+		return wykladowca;
 	}
 	
 	@Override
 	@GET
-	@Path("/getWykladowca")
-	public String getWykladowca() {
+	@Path("/getWykladowcy")
+	@Produces("application/json")
+	public Wykladowcy getWykladowcy() {
 		List<Wykladowca> lWykladowca = bean.getWykladowca();
-		StringWriter sw = new StringWriter();
 		Wykladowcy wykladowcy = new Wykladowcy(lWykladowca);
-		JAXB.marshal(wykladowcy, sw);
-		return sw.toString();
+		return wykladowcy;
 	}
 	
 	@Override
@@ -78,23 +77,21 @@ public class AnkietyREST implements Ankiety {
 	
 	@Override
 	@GET
-	@Path("/getPrzedmiot")
-	public String getPrzedmiot() {
+	@Path("/getPrzedmioty")
+	@Produces("application/json")
+	public Przedmioty getPrzedmioty() {
 		List<Przedmiot> lPrzedmiot = bean.getPrzedmiot();
-		StringWriter sw = new StringWriter();
 		Przedmioty przedmioty = new Przedmioty(lPrzedmiot);
-		JAXB.marshal(przedmioty, sw);
-		return sw.toString();
+		return przedmioty;
 	}
 	
 	@Override
 	@GET
 	@Path("/findPrzedmiot/{idp}")
-	public String findPrzedmiot(@PathParam("idp") int idp) {
+	@Produces("application/json")
+	public Przedmiot findPrzedmiot(@PathParam("idp") int idp) {
 		Przedmiot przedmiot = bean.findPrzedmiot(idp);
-		StringWriter sw = new StringWriter();
-		JAXB.marshal(przedmiot, sw);
-		return sw.toString();
+		return przedmiot;
 	}
 	
 	@Override
@@ -121,23 +118,21 @@ public class AnkietyREST implements Ankiety {
 	
 	@Override
 	@GET
-	@Path("/getMozliwaOdpowiedz")
-	public String getMozliwaOdpowiedz() {
+	@Path("/getMozliweOdpowiedzi")
+	@Produces("application/json")
+	public MozliweOdpowiedzi getMozliweOdpowiedzi() {
 		List<MozliwaOdpowiedz> lMozliwaOdpowiedz = bean.getMozliwaOdpowiedz();
-		StringWriter sw = new StringWriter();
 		MozliweOdpowiedzi mozliweOdpowiedzi = new MozliweOdpowiedzi(lMozliwaOdpowiedz);
-		JAXB.marshal(mozliweOdpowiedzi, sw);
-		return sw.toString();
+		return mozliweOdpowiedzi;
 	}
 	
 	@Override
 	@GET
 	@Path("/findMozliwaOdpowiedz/{idm}")
-	public String findMozliwaOdpowiedz(@PathParam("idm") int idm) {
+	@Produces("application/json")
+	public MozliwaOdpowiedz findMozliwaOdpowiedz(@PathParam("idm") int idm) {
 		MozliwaOdpowiedz mozliwaOdpowiedz = bean.findMozliwaOdpowiedz(idm);
-		StringWriter sw = new StringWriter();
-		JAXB.marshal(mozliwaOdpowiedz, sw);
-		return sw.toString();
+		return mozliwaOdpowiedz;
 	}
 	
 	@Override

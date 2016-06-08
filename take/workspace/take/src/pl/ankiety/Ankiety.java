@@ -13,9 +13,9 @@ public interface Ankiety {
 	
 	public abstract String createWykladowca(String imieNazwisko);
 
-	public abstract String findWykladowca(int idw);
+	public abstract Wykladowca findWykladowca(int idw);
 
-	public abstract String getWykladowca();
+	public abstract Wykladowcy getWykladowcy();
 
 	public abstract void deleteWykladowca(int idw);
 	
@@ -29,9 +29,9 @@ public interface Ankiety {
 	
 	public abstract String createPrzedmiot(String nazwa, int idw);
 
-	public abstract String findPrzedmiot(int idp);
+	public abstract Przedmiot findPrzedmiot(int idp);
 
-	public abstract String getPrzedmiot();
+	public abstract Przedmioty getPrzedmioty();
 
 	public abstract void deletePrzedmiot(int idp);
 	
@@ -42,9 +42,9 @@ public interface Ankiety {
 	
 	public abstract String createMozliwaOdpowiedz(String tresc);
 
-	public abstract String findMozliwaOdpowiedz(int idm);
+	public abstract MozliwaOdpowiedz findMozliwaOdpowiedz(int idm);
 
-	public abstract String getMozliwaOdpowiedz();
+	public abstract MozliweOdpowiedzi getMozliweOdpowiedzi();
 
 	public abstract void deleteMozliwaOdpowiedz(int idm);
 	
