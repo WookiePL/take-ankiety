@@ -10,7 +10,7 @@
   Możemy użyć JSON zamiast XML
 * -
 * pytanie może OTWARTE albo ZAMKNIĘTE, OTWARTE ma tylko ODPOWIEDŹ, ZAMKNIĘTE ma LISTĘ ODPOWIEDZI
-#### więcej info:
+    ### więcej info:
     * Klient może być JSowy (a nie Javowy)
     * Trzeba przygotować jakąś dokumentację - lista URLi (czyli dokumentacja API)
 
