@@ -8,7 +8,18 @@
 		<class>pl.ankiety.Wykladowca</class>
 		<class>pl.ankiety.Przedmiot</class>
 		<class>pl.ankiety.MozliwaOdpowiedz</class>
+		<!-- <class>pl.ankiety.Pytanie</class> -->
 		
+		<properties>
+			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="komis">
+		<jta-data-source>java:/DefaultDS</jta-data-source>
+		<class>pl.kurs.komis.Car</class>
+
 		<properties>
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
 			<property name="hibernate.hbm2ddl.auto" value="update"/>

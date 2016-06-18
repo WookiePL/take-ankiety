@@ -141,4 +141,41 @@ public class AnkietyREST implements Ankiety {
 	public void deleteMozliwaOdpowiedz(@PathParam("idm") int idm) {
 		bean.deleteMozliwaOdpowiedz(idm);
 	}
+
+	
+/*****************************************************************************************	
+ * Pytanie
+ ****************************************************************************************/
+	
+	
+	@Override
+	@GET
+	@Path("/createPytanie/{typ}/{tresc}")
+	public String createPytanie(String tresc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@GET
+	@Path("/getPytania")
+	public Pytania getPytania() {
+		List<Pytanie> lPytanie = bean.getPytanie();
+		Pytania pytania = new Pytania(lPytanie);
+		return pytania;
+	}
+
+	@Override
+	@GET
+	@Path("/findPytanie/{idm}")
+	public Pytanie findPytanie(int idm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void deletePytanie(int idm) {
+		// TODO Auto-generated method stub
+		
+	}
 }

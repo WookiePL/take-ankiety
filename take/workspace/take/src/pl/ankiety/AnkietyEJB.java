@@ -113,4 +113,37 @@ public class AnkietyEJB {
 		System.out.println("Usunieto mozliwa odpowiedz");
 	}
 	
+/*****************************************************************************************	
+ * Pytanie
+ ****************************************************************************************/
+	
+	public void createPytanie(Pytanie pytanie) {
+		manager.persist(pytanie);
+		System.out.println("Utworzono pytanie");
+	}
+	
+	public Pytanie findPytanie(int idm) {
+		System.out.println("Wyszukano pytanie");
+		return manager.find(Pytanie.class, idm);
+	}
+	
+	public List<Pytanie> getPytanie() {
+		Query q = manager.createQuery("select m from Pytanie m");
+		@SuppressWarnings("unchecked")
+		List<Pytanie> list = q.getResultList();
+		System.out.println("Zwrocono mozliwe odpowiedzi");
+		return list;
+	}
+	
+	public void updatePytanie(Pytanie pytanie) {
+		pytanie = manager.merge(pytanie);
+		System.out.println("Aktualizowano pytanie");
+	}
+	
+	public void deletePytanie(int idm) {
+		Pytanie pytanie = manager.find(Pytanie.class, idm);
+		manager.remove(pytanie);
+		System.out.println("Usunieto pytanie");
+	}
+	
 }
