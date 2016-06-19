@@ -1,5 +1,7 @@
 # TAKE ankiety
 
+### na próbe wrzuciłem całą paczkę `take.zip` z platformy. https://git-lfs.github.com/
+
 ### Pytania do prowadzącego
 * Jak wysyłać/odbierać JSON zamiast XML?
 * Klient nie działa, dlaczego wpisując jako adres w przeglądarce dostajemyn dane w XML ale jak pobieramy AJAXem to odpowiedź jest pusta?
