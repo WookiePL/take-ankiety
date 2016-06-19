@@ -11,7 +11,7 @@ na próbe wrzuciłem całą paczkę `take.zip` z platformy. https://git-lfs.gith
 * Trzeba użyć adnotacji `@Produces("application/json")` więcej info http://stackoverflow.com/questions/13594945/how-correctly-produce-json-by-restful-web-service
   Możemy użyć JSON zamiast XML
 * -
-* pytanie może OTWARTE albo ZAMKNIĘTE, OTWARTE ma tylko ODPOWIEDŹ, ZAMKNIĘTE ma LISTĘ ODPOWIEDZI
+* pytanie może być OTWARTE albo ZAMKNIĘTE, OTWARTE ma tylko ODPOWIEDŹ, ZAMKNIĘTE ma LISTĘ ODPOWIEDZI
     
     **więcej info**:
     * Klient może być JSowy (a nie Javowy)
