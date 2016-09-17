@@ -1,0 +1,280 @@
+
+<h1>Ankiety</h1>
+<h3>Wykladowcy</h3>
+<div id="teachers"></div>
+<input type="text" name="teacherName" class="teacherName"><span class="addTeacher">Dodaj</span>
+
+
+<h3>Przedmioty</h3>
+<div id="subject"></div>
+<input type="text" name="subjectName" class="subjectName"><select class="subjectTeacher"></select><span class="addSubject">Dodaj</span>
+
+
+<h3>Mozliwe Odpowiedzi</h3>
+<div id="answers"></div>
+<input type="text" name="answerName" class="answerName"><span class="addAnswer">Dodaj</span>
+
+
+<h3>Pytania</h3>
+<div id="questions"></div>
+<input type="text" name="questionName" class="questionName"><select class="questionType"></select><span class="addQuestion">Dodaj</span>
+
+<script src="jquery-3.1.0.min.js"></script>
+<script>
+
+	function bindTeachersRemovers() {
+		$('.teacherRemover').click(function(){
+			var idw = $(this).attr('idw');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deleteWykladowca/" + idw,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#teachers').empty();
+				$('.subjectTeacher').empty();
+				teacherList();
+			});
+		});
+	}
+	
+	function teacherList() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getWykladowcy",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#teachers').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#teachers').append('<tr>');
+					$('#teachers').append('<td>' + parsedObj[value][ivalue]['imieNazwisko'] + '</td>');
+					$('#teachers').append('<td><span class="teacherRemover" idw="' + parsedObj[value][ivalue]['idw'] + '">Usun</span></td>');
+					$('#teachers').append('</tr>');
+					$('.subjectTeacher').append('<option idw="' + parsedObj[value][ivalue]['idw'] + '">' + parsedObj[value][ivalue]['imieNazwisko'] + '</option>')
+				};
+			};
+			$('#teachers').append('</table>');
+			bindTeachersRemovers();
+		});
+		
+	}
+	
+	$('.addTeacher').click(function() {
+		var nameFromForm = $('.teacherName').val();
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createWykladowca/" + nameFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#teachers').empty();
+			$('.subjectTeacher').empty();
+			teacherList();
+		});
+	});
+	
+	
+
+	function bindSubjectsRemovers() {
+		$('.subjectRemover').click(function(){
+			var idw = $(this).attr('idp');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deletePrzedmiot/" + idw,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#subject').empty();
+				subjectsList();
+			});
+		});
+	}
+	
+	function subjectsList() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getPrzedmioty",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#subject').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#subject').append('<tr>');
+					$('#subject').append('<td>' + parsedObj[value][ivalue]['nazwa'] + '</td>');
+					$('#subject').append('<td>' + parsedObj[value][ivalue]['wykladowca']['imieNazwisko'] + '</td>');
+					$('#subject').append('<td><span class="subjectRemover" idp="' + parsedObj[value][ivalue]['idp'] + '">Usun</span></td>');
+					$('#subject').append('</tr>');
+				};
+			};
+			$('#subject').append('</table>');
+			bindSubjectsRemovers();
+		});
+		
+	}
+	
+	$('.addSubject').click(function() {
+		var nameFromForm = $('.subjectName').val();
+		var teacherFromForm = $('.subjectTeacher option:selected').attr('idw');
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createPrzedmiot/" + nameFromForm + "/" + teacherFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#subject').empty();
+			subjectsList();
+		});
+	});
+	
+	
+
+	function bindAnswerRemovers() {
+		$('.answerRemover').click(function(){
+			var idw = $(this).attr('idm');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deleteMozliwaOdpowiedz/" + idw,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#answers').empty();
+				answerList();
+			});
+		});
+	}
+	
+	function answerList() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getMozliweOdpowiedzi",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#answers').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#answers').append('<tr>');
+					$('#answers').append('<td>' + parsedObj[value][ivalue]['tresc'] + '</td>');
+					$('#answers').append('<td><span class="answerRemover" idm="' + parsedObj[value][ivalue]['idm'] + '">Usun</span></td>');
+					$('#answers').append('</tr>');
+				};
+			};
+			$('#answers').append('</table>');
+			bindAnswerRemovers();
+		});
+		
+	}
+	
+	$('.addAnswer').click(function() {
+		var answerFromForm = $('.answerName').val();
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createMozliwaOdpowiedz/" + answerFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#answers').empty();
+			answerList();
+		});
+	});
+	
+	
+/*
+	function bindQuestionsRemovers() {
+		$('.questionRemover').click(function(){
+			var idw = $(this).attr('idp');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deletePytanie/" + idw,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#questions').empty();
+				questionsList();
+			});
+		});
+	}
+	
+	function questionsList() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getPytania",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#questions').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#questions').append('<tr>');
+					$('#questions').append('<td>' + parsedObj[value][ivalue]['tresc'] + '</td>');
+					//$('#questions').append('<td>' + parsedObj[value][ivalue]['wykladowca']['imieNazwisko'] + '</td>');
+					$('#questions').append('<td><span class="subjectRemover" idw="' + parsedObj[value][ivalue]['idw'] + '">Usun</span></td>');
+					$('#questions').append('</tr>');
+				};
+			};
+			$('#questions').append('</table>');
+			bindQuestionsRemovers();
+		});
+		
+	}
+	
+	$('.addQuestion').click(function() {
+		var nameFromForm = $('.questionName').val();
+		var questionFromForm = $('.questionType option:selected').attr('idw');
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createPrzedmiot/" + nameFromForm + "/" + questionFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#questions').empty();
+			subjectsList();
+		});
+	});
+	*/
+
+	teacherList();
+	subjectsList();
+	answerList();
+	//questionsList();
+
+</script>
