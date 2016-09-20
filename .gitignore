@@ -22,3 +22,4 @@ take/workspace/take/WebContent/*
 take/workspace/take/WebContent/WEB-INF/*
 !/take/workspace/take/WebContent/WEB-INF/persistence.xml
 !/take/workspace/take/WebContent/WEB-INF/web.xml
+ankiety.ldb

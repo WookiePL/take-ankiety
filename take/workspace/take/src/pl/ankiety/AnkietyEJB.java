@@ -122,16 +122,16 @@ public class AnkietyEJB {
 		System.out.println("Utworzono pytanie");
 	}
 	
-	public Pytanie findPytanie(int idm) {
+	public Pytanie findPytanie(int idq) {
 		System.out.println("Wyszukano pytanie");
-		return manager.find(Pytanie.class, idm);
+		return manager.find(Pytanie.class, idq);
 	}
 	
 	public List<Pytanie> getPytanie() {
-		Query q = manager.createQuery("select m from Pytanie m");
+		Query q = manager.createQuery("select p from Pytanie p");
 		@SuppressWarnings("unchecked")
 		List<Pytanie> list = q.getResultList();
-		System.out.println("Zwrocono mozliwe odpowiedzi");
+		System.out.println("Zwrocono mozliwe pytania");
 		return list;
 	}
 	
@@ -140,8 +140,8 @@ public class AnkietyEJB {
 		System.out.println("Aktualizowano pytanie");
 	}
 	
-	public void deletePytanie(int idm) {
-		Pytanie pytanie = manager.find(Pytanie.class, idm);
+	public void deletePytanie(int idq) {
+		Pytanie pytanie = manager.find(Pytanie.class, idq);
 		manager.remove(pytanie);
 		System.out.println("Usunieto pytanie");
 	}

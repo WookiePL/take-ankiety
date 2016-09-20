@@ -53,12 +53,12 @@ public interface Ankiety {
  * Pytanie
  ****************************************************************************************/
 	
-	public abstract String createPytanie(String tresc);
+	public abstract String createPytanie(String typ, String tresc);
 
-	public abstract Pytanie findPytanie(int idm);
+	public abstract Pytanie findPytanie(int idq);
 
 	public abstract Pytania getPytania();
 
-	public abstract void deletePytanie(int idm);
-	
+	public abstract void deletePytanie(int idq);
+
 }

@@ -13,19 +13,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Pytanie implements Serializable {
 	
 	private static final long serialVersionUID = 1L;	
-	int idw;
+	int idq;
 	String tresc;
-	Integer typ;
+	String typ;
 	
 	@Id
 	@GeneratedValue
 	@XmlAttribute
-	public int getIdw() {
-		return idw;
+	public int getIdq() {
+		return idq;
 	}
 	
-	public void setIdw(int idw) {
-		this.idw = idw;
+	public void setIdq(int idq) {
+		this.idq = idq;
 	}
 	
 	public String getTresc() {
@@ -36,11 +36,11 @@ public class Pytanie implements Serializable {
 		this.tresc = tresc;
 	}
 	
-	public Integer getTyp() {
+	public String getTyp() {
 		return typ;
 	}
 	
-	public void setTyp(Integer typ) {
+	public void setTyp(String typ) {
 		this.typ = typ;
 	}
 	

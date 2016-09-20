@@ -151,14 +151,18 @@ public class AnkietyREST implements Ankiety {
 	@Override
 	@GET
 	@Path("/createPytanie/{typ}/{tresc}")
-	public String createPytanie(String tresc) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createPytanie(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
+		Pytanie pytanie = new Pytanie();
+		pytanie.setTyp(typ);
+		pytanie.setTresc(tresc);
+		bean.createPytanie(pytanie);
+		return "dodano pytanie";
 	}
 
 	@Override
 	@GET
 	@Path("/getPytania")
+	@Produces("application/json")
 	public Pytania getPytania() {
 		List<Pytanie> lPytanie = bean.getPytanie();
 		Pytania pytania = new Pytania(lPytanie);
@@ -167,15 +171,18 @@ public class AnkietyREST implements Ankiety {
 
 	@Override
 	@GET
-	@Path("/findPytanie/{idm}")
-	public Pytanie findPytanie(int idm) {
-		// TODO Auto-generated method stub
-		return null;
+	@Path("/findPytanie/{idq}")
+	@Produces("application/json")
+	public Pytanie findPytanie(int idq) {
+		Pytanie pytanie = bean.findPytanie(idq);
+		return pytanie;
 	}
 	
 	@Override
-	public void deletePytanie(int idm) {
-		// TODO Auto-generated method stub
+	@GET
+	@Path("/deletePytanie/{idq}")
+	public void deletePytanie(@PathParam("idq") int idq) {
+		bean.deletePytanie(idq);
 		
 	}
 }
