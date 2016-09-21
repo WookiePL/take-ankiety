@@ -1,6 +1,5 @@
 package pl.ankiety;
 
-import java.io.StringWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -9,7 +8,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.xml.bind.JAXB;
 
 
 @Path("/ankiety")
@@ -147,7 +145,8 @@ public class AnkietyREST implements Ankiety {
  * Pytanie
  ****************************************************************************************/
 	
-	
+/*
+
 	@Override
 	@GET
 	@Path("/createPytanie/{typ}/{tresc}")
@@ -171,18 +170,60 @@ public class AnkietyREST implements Ankiety {
 
 	@Override
 	@GET
-	@Path("/findPytanie/{idq}")
+	@Path("/findPytanie/{idque}")
 	@Produces("application/json")
-	public Pytanie findPytanie(int idq) {
-		Pytanie pytanie = bean.findPytanie(idq);
+	public Pytanie findPytanie(int idque) {
+		Pytanie pytanie = bean.findPytanie(idque);
 		return pytanie;
 	}
-	
+
 	@Override
 	@GET
-	@Path("/deletePytanie/{idq}")
-	public void deletePytanie(@PathParam("idq") int idq) {
-		bean.deletePytanie(idq);
-		
+	@Path("/deletePytanie/{idque}")
+	@Produces("application/json")
+	public void deletePytanie(@PathParam("idque") int idque) {
+		bean.deletePytanie(idque);
+
+	}
+*/
+
+
+	@Override
+	@GET
+	@Path("/createPytanie/{typ}/{tresc}")
+	public String createPytanie2(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
+		Pytanie2 pytanie2 = new Pytanie2();
+		pytanie2.setTyp(typ);
+		pytanie2.setTresc(tresc);
+		bean.createPytanie2(pytanie2);
+		return "dodano pytanie2";
+	}
+
+	@Override
+	@GET
+	@Path("/getPytania")
+	@Produces("application/json")
+	public Pytania2 getPytania2() {
+		List<Pytanie2> lPytanie2 = bean.getPytanie2();
+		Pytania2 pytania2 = new Pytania2(lPytanie2);
+		return pytania2;
+	}
+
+	@Override
+	@GET
+	@Path("/findPytanie/{idque}")
+	@Produces("application/json")
+	public Pytanie2 findPytanie2(int idque) {
+		Pytanie2 pytanie2 = bean.findPytanie2(idque);
+		return pytanie2;
+	}
+
+	@Override
+	@GET
+	@Path("/deletePytanie/{idque}")
+	@Produces("application/json")
+	public void deletePytanie2(@PathParam("idque") int idque) {
+		bean.deletePytanie2(idque);
+
 	}
 }

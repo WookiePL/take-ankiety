@@ -1,16 +1,15 @@
 package pl.ankiety;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @Entity
 @XmlRootElement
-public class Pytanie implements Serializable {
+public class Pytanie2 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;	
 	int idque;
