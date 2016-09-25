@@ -146,33 +146,5 @@ public class AnkietyEJB {
 		System.out.println("Usunieto pytanie");
 	}
 
-	public void createPytanie2(Pytanie2 pytanie2) {
-		manager.persist(pytanie2);
-		System.out.println("Utworzono pytanie2");
-	}
-
-	/*public Pytanie2 findPytanie2(int idque) {
-		System.out.println("Wyszukano pytanie2");
-		return manager.find(Pytanie2.class, idque);
-	}
-
-	public List<Pytanie2> getPytanie2() {
-		Query q = manager.createQuery("select p from Pytanie2 p");
-		@SuppressWarnings("unchecked")
-		List<Pytanie2> list = q.getResultList();
-		System.out.println("Zwrocono mozliwe pytania");
-		return list;
-	}
-
-	public void updatePytanie2(Pytanie2 pytanie2) {
-		pytanie2 = manager.merge(pytanie2);
-		System.out.println("Aktualizowano pytanie2");
-	}
-
-	public void deletePytanie2(int idque) {
-		Pytanie2 pytanie2 = manager.find(Pytanie2.class, idque);
-		manager.remove(pytanie2);
-		System.out.println("Usunieto pytanie2");
-	}*/
 	
 }

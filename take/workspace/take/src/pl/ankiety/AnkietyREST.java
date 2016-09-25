@@ -189,43 +189,4 @@ public class AnkietyREST implements Ankiety {
 
 	}
 
-
-/*	@Override
-	@GET
-	@Path("/createPytanie/{typ}/{tresc}")
-	public String createPytanie2(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
-		Pytanie2 pytanie2 = new Pytanie2();
-		pytanie2.setTyp(typ);
-		pytanie2.setTresc(tresc);
-		bean.createPytanie2(pytanie2);
-		return "dodano pytanie2";
-	}
-
-	@Override
-	@GET
-	@Path("/getPytania")
-	@Produces("application/json")
-	public Pytania2 getPytania2() {
-		List<Pytanie2> lPytanie2 = bean.getPytanie2();
-		Pytania2 pytania2 = new Pytania2(lPytanie2);
-		return pytania2;
-	}
-
-	@Override
-	@GET
-	@Path("/findPytanie/{idque}")
-	@Produces("application/json")
-	public Pytanie2 findPytanie2(int idque) {
-		Pytanie2 pytanie2 = bean.findPytanie2(idque);
-		return pytanie2;
-	}
-
-	@Override
-	@GET
-	@Path("/deletePytanie/{idque}")
-	@Produces("application/json")
-	public void deletePytanie2(@PathParam("idque") int idque) {
-		bean.deletePytanie2(idque);
-
-	}*/
 }

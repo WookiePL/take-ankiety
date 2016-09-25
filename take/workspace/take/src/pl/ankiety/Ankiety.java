@@ -61,11 +61,4 @@ public interface Ankiety {
 
 	public abstract void deletePytanie(int idque);
 
-/*	public abstract String createPytanie2(String typ, String tresc);
-
-	public abstract Pytanie2 findPytanie2(int idque);
-
-	public abstract Pytania2 getPytania2();
-
-	public abstract void deletePytanie2(int idque);*/
 }
