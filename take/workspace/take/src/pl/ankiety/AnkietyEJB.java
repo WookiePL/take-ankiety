@@ -151,7 +151,7 @@ public class AnkietyEJB {
 		System.out.println("Utworzono pytanie2");
 	}
 
-	public Pytanie2 findPytanie2(int idque) {
+	/*public Pytanie2 findPytanie2(int idque) {
 		System.out.println("Wyszukano pytanie2");
 		return manager.find(Pytanie2.class, idque);
 	}
@@ -173,6 +173,6 @@ public class AnkietyEJB {
 		Pytanie2 pytanie2 = manager.find(Pytanie2.class, idque);
 		manager.remove(pytanie2);
 		System.out.println("Usunieto pytanie2");
-	}
+	}*/
 	
 }

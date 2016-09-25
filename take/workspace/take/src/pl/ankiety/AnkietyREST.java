@@ -145,7 +145,6 @@ public class AnkietyREST implements Ankiety {
  * Pytanie
  ****************************************************************************************/
 	
-/*
 
 	@Override
 	@GET
@@ -185,10 +184,9 @@ public class AnkietyREST implements Ankiety {
 		bean.deletePytanie(idque);
 
 	}
-*/
 
 
-	@Override
+/*	@Override
 	@GET
 	@Path("/createPytanie/{typ}/{tresc}")
 	public String createPytanie2(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
@@ -225,5 +223,5 @@ public class AnkietyREST implements Ankiety {
 	public void deletePytanie2(@PathParam("idque") int idque) {
 		bean.deletePytanie2(idque);
 
-	}
+	}*/
 }

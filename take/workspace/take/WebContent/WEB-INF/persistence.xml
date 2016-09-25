@@ -8,8 +8,8 @@
 		<class>pl.ankiety.Wykladowca</class>
 		<class>pl.ankiety.Przedmiot</class>
 		<class>pl.ankiety.MozliwaOdpowiedz</class>
-	<!--	<class>pl.ankiety.Pytanie</class>-->
-		<class>pl.ankiety.Pytanie2</class>
+		<class>pl.ankiety.Pytanie</class>
+		<!--<class>pl.ankiety.Pytanie2</class>-->
 
 		<properties>
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
