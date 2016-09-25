@@ -15,6 +15,7 @@ public class MozliwaOdpowiedz implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int idm;
 	String tresc;
+	Pytanie pytanie;
 	
 	@Id
 	@GeneratedValue
@@ -33,5 +34,13 @@ public class MozliwaOdpowiedz implements Serializable {
 	
 	public void setTresc(String tresc) {
 		this.tresc = tresc;
+	}
+
+	public Pytanie getPytanie() {
+		return pytanie;
+	}
+
+	public void setPytanie(Pytanie pytanie) {
+		this.pytanie = pytanie;
 	}
 }

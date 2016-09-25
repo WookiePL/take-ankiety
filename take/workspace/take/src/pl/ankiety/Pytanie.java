@@ -12,10 +12,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Pytanie implements Serializable {
 	
-	private static final long serialVersionUID = 1L;	
+	private static final long serialVersionUID = 2L;
 	int idque;
 	String tresc;
 	String typ;
+	Przedmiot przedmiot;
 
 	@Id
 	@GeneratedValue
@@ -39,7 +40,15 @@ public class Pytanie implements Serializable {
 	public String getTyp() {
 		return typ;
 	}
-	
+
+	public Przedmiot getPrzedmiot() {
+		return przedmiot;
+	}
+
+	public void setPrzedmiot(Przedmiot przedmiot) {
+		this.przedmiot = przedmiot;
+	}
+
 	public void setTyp(String typ) {
 		this.typ = typ;
 	}

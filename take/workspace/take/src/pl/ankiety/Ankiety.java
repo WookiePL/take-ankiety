@@ -40,7 +40,7 @@ public interface Ankiety {
  * MozliwaOdpowiedz
  ****************************************************************************************/
 	
-	public abstract String createMozliwaOdpowiedz(String tresc);
+	public abstract String createMozliwaOdpowiedz(String tresc, int ideque);
 
 	public abstract MozliwaOdpowiedz findMozliwaOdpowiedz(int idm);
 
@@ -53,7 +53,7 @@ public interface Ankiety {
  * Pytanie
  ****************************************************************************************/
 	
-	public abstract String createPytanie(String typ, String tresc);
+	public abstract String createPytanie(String typ, String tresc, int idp);
 
 	public abstract Pytanie findPytanie(int idque);
 
