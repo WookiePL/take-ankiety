@@ -4,20 +4,24 @@
 <div id="teachers"></div>
 <input type="text" name="teacherName" class="teacherName"><span class="addTeacher">Dodaj</span>
 
+<hr>
 
 <h3>Przedmioty</h3>
 <div id="subject"></div>
 <input type="text" name="subjectName" class="subjectName"><select class="subjectTeacher"></select><span class="addSubject">Dodaj</span>
 
+<hr>
 
 <h3>Mozliwe Odpowiedzi</h3>
 <div id="answers"></div>
 <input type="text" name="answerName" class="answerName"><span class="addAnswer">Dodaj</span>
 
+<hr>
 
 <h3>Pytania</h3>
 <div id="questions"></div>
-<input type="text" name="questionName" class="questionName"><select class="questionType"></select><span class="addQuestion">Dodaj</span>
+<input type="text" name="questionName" class="questionName"><select class="questionType"></select><label><input type="checkbox" class="closed">Pytanie zamkniete</label>
+<span class="addQuestion">Dodaj</span>
 
 <script src="jquery-3.1.0.min.js"></script>
 <script>
@@ -123,6 +127,8 @@
 					$('#subject').append('<td>' + parsedObj[value][ivalue]['wykladowca']['imieNazwisko'] + '</td>');
 					$('#subject').append('<td><span class="subjectRemover" idp="' + parsedObj[value][ivalue]['idp'] + '">Usun</span></td>');
 					$('#subject').append('</tr>');
+					$('.questionType').append('<option idp="' + parsedObj[value][ivalue]['idp'] + '">' + parsedObj[value][ivalue]['nazwa'] + '</option>')
+
 				};
 			};
 			$('#subject').append('</table>');
@@ -209,10 +215,10 @@
 	});
 	
 	
-/*
+
 	function bindQuestionsRemovers() {
 		$('.questionRemover').click(function(){
-			var idw = $(this).attr('idp');
+			var idw = $(this).attr('idque');
 			
 			$.ajax({
 			url: "http://localhost:8080/take/ankiety/deletePytanie/" + idw,
@@ -244,8 +250,8 @@
 				for (var ivalue in parsedObj[value]) {
 					$('#questions').append('<tr>');
 					$('#questions').append('<td>' + parsedObj[value][ivalue]['tresc'] + '</td>');
-					//$('#questions').append('<td>' + parsedObj[value][ivalue]['wykladowca']['imieNazwisko'] + '</td>');
-					$('#questions').append('<td><span class="subjectRemover" idw="' + parsedObj[value][ivalue]['idw'] + '">Usun</span></td>');
+					$('#questions').append('<td>' + parsedObj[value][ivalue]['przedmiot']['nazwa'] + '</td>');
+					$('#questions').append('<td><span class="questionRemover" idque="' + parsedObj[value][ivalue]['idque'] + '">Usun</span></td>');
 					$('#questions').append('</tr>');
 				};
 			};
@@ -257,24 +263,25 @@
 	
 	$('.addQuestion').click(function() {
 		var nameFromForm = $('.questionName').val();
-		var questionFromForm = $('.questionType option:selected').attr('idw');
+		var questionFromForm = $('.questionType option:selected').attr('idp');
+		var closed = $('.closed').prop('checked') ? 1 : 0;
 		
 		$.ajax({
-		url: "http://localhost:8080/take/ankiety/createPrzedmiot/" + nameFromForm + "/" + questionFromForm,
+		url: "http://localhost:8080/take/ankiety/createPytanie/" + closed + "/" + nameFromForm + "/" + questionFromForm,
 		beforeSend: function( xhr ) {
 		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
 		}
 		})
 		.done(function() {
 			$('#questions').empty();
-			subjectsList();
+			questionsList();
 		});
 	});
-	*/
+	
 
 	teacherList();
 	subjectsList();
 	answerList();
-	//questionsList();
+	questionsList();
 
 </script>
