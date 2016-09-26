@@ -61,4 +61,30 @@ public interface Ankiety {
 
 	public abstract void deletePytanie(int idque);
 
+	
+/*****************************************************************************************	
+ * ListaOdpowiedziZamknietych
+ ****************************************************************************************/
+
+	public abstract String createListaOdpowiedziZamknietych(int idque);
+
+	public abstract ListaOdpowiedziZamknietych findListaOdpowiedziZamknietych(int idl);
+
+	public abstract ListyOdpowiedziZamknietych getListyOdpowiedziZamknietych();
+
+	public abstract void deleteListaOdpowiedziZamknietych(int idl);
+
+	
+/*****************************************************************************************	
+ * OdpowiedzZamknieta
+ ****************************************************************************************/
+
+	public abstract String createOdpowiedzZamknieta(String tresc, int idl);
+
+	public abstract OdpowiedzZamknieta findOdpowiedzZamknieta(int idque);
+
+	public abstract OdpowiedziZamkniete getOdpowiedziZamkniete();
+
+	public abstract void deleteOdpowiedzZamknieta(int idque);
+
 }

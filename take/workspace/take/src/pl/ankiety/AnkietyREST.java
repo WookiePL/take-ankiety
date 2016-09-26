@@ -189,4 +189,93 @@ public class AnkietyREST implements Ankiety {
 
 	}
 
+/*****************************************************************************************	
+ * ListaOdpowiedziZamknietych
+ ****************************************************************************************/
+
+
+    @Override
+    @GET
+    @Path("/createListaOdpowiedziZamknietych/{idque}")
+    public String createListaOdpowiedziZamknietych(@PathParam("idque") int idque) {
+        ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
+        Pytanie pytanie = bean.findPytanie(idque);
+        listaOdpowiedziZamknietych.setPytanie(pytanie);
+        bean.createListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
+        return "dodano listaOdpowiedziZamknietych";
+    }
+
+    @Override
+    @GET
+    @Path("/getListyOdpowiedziZamknietych")
+    @Produces("application/json")
+    public ListyOdpowiedziZamknietych getListyOdpowiedziZamknietych() {
+        List<ListaOdpowiedziZamknietych> lListaOdpowiedziZamknietych = bean.getListaOdpowiedziZamknietych();
+        ListyOdpowiedziZamknietych listyOdpowiedziZamknietych = new ListyOdpowiedziZamknietych(lListaOdpowiedziZamknietych);
+        return listyOdpowiedziZamknietych;
+    }
+
+    @Override
+    @GET
+    @Path("/findListaOdpowiedziZamknietych/{idl}")
+    @Produces("application/json")
+    public ListaOdpowiedziZamknietych findListaOdpowiedziZamknietych(int idl) {
+        ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = bean.findListaOdpowiedziZamknietych(idl);
+        return listaOdpowiedziZamknietych;
+    }
+
+    @Override
+    @GET
+    @Path("/deleteListaOdpowiedziZamknietych/{idl}")
+    @Produces("application/json")
+    public void deleteListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
+        bean.deleteListaOdpowiedziZamknietych(idl);
+
+    }
+
+/*****************************************************************************************	
+ * OdpowiedzZamknieta
+ ****************************************************************************************/
+
+
+    @Override
+    @GET
+    @Path("/createOdpowiedzZamknieta/{tresc}/{idl}")
+    public String createOdpowiedzZamknieta(@PathParam("tresc") String tresc, @PathParam("idl") int idl) {
+        OdpowiedzZamknieta odpowiedzZamknieta = new OdpowiedzZamknieta();
+        ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
+        odpowiedzZamknieta.setListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
+        bean.createOdpowiedzZamknieta(odpowiedzZamknieta);
+        return "dodano odpowiedzZamknieta";
+    }
+
+    @Override
+    @GET
+    @Path("/getOdpowiedziZamkniete")
+    @Produces("application/json")
+    public OdpowiedziZamkniete getOdpowiedziZamkniete() {
+        List<OdpowiedzZamknieta> lOdpowiedzZamknieta = bean.getOdpowiedzZamknieta();
+        OdpowiedziZamkniete OdpowiedziZamkniete = new OdpowiedziZamkniete(lOdpowiedzZamknieta);
+        return OdpowiedziZamkniete;
+    }
+
+    @Override
+    @GET
+    @Path("/findOdpowiedzZamknieta/{idque}")
+    @Produces("application/json")
+    public OdpowiedzZamknieta findOdpowiedzZamknieta(int idz) {
+        OdpowiedzZamknieta odpowiedzZamknieta = bean.findOdpowiedzZamknieta(idz);
+        return odpowiedzZamknieta;
+    }
+
+    @Override
+    @GET
+    @Path("/deleteOdpowiedzZamknieta/{idz}")
+    @Produces("application/json")
+    public void deleteOdpowiedzZamknieta(@PathParam("idz") int idz) {
+        bean.deleteOdpowiedzZamknieta(idz);
+
+    }
+
+
 }

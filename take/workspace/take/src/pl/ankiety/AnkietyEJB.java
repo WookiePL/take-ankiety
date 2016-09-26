@@ -146,5 +146,71 @@ public class AnkietyEJB {
 		System.out.println("Usunieto pytanie");
 	}
 
+/*****************************************************************************************	
+ * ListaOdpowiedziZamknietych
+ ****************************************************************************************/
+
+	public void createListaOdpowiedziZamknietych(ListaOdpowiedziZamknietych listaOdpowiedziZamknietych) {
+		manager.persist(listaOdpowiedziZamknietych);
+		System.out.println("Utworzono listaOdpowiedziZamknietych");
+	}
+
+	public ListaOdpowiedziZamknietych findListaOdpowiedziZamknietych(int idque) {
+		System.out.println("Wyszukano listaOdpowiedziZamknietych");
+		return manager.find(ListaOdpowiedziZamknietych.class, idque);
+	}
+
+	public List<ListaOdpowiedziZamknietych> getListaOdpowiedziZamknietych() {
+		Query q = manager.createQuery("select l from ListaOdpowiedziZamknietych l");
+		@SuppressWarnings("unchecked")
+		List<ListaOdpowiedziZamknietych> list = q.getResultList();
+		System.out.println("Zwrocono mozliwe listy odpowiedzi zamknietych");
+		return list;
+	}
+
+	public void updateListaOdpowiedziZamknietych(ListaOdpowiedziZamknietych listaOdpowiedziZamknietych) {
+		listaOdpowiedziZamknietych = manager.merge(listaOdpowiedziZamknietych);
+		System.out.println("Aktualizowano listaOdpowiedziZamknietych");
+	}
+
+	public void deleteListaOdpowiedziZamknietych(int idque) {
+		ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = manager.find(ListaOdpowiedziZamknietych.class, idque);
+		manager.remove(listaOdpowiedziZamknietych);
+		System.out.println("Usunieto listaOdpowiedziZamknietych");
+	}
+
+/*****************************************************************************************	
+ * OdpowiedzZamknieta
+ ****************************************************************************************/
+
+	public void createOdpowiedzZamknieta(OdpowiedzZamknieta odpowiedzZamknieta) {
+		manager.persist(odpowiedzZamknieta);
+		System.out.println("Utworzono odpowiedzZamknieta");
+	}
+
+	public OdpowiedzZamknieta findOdpowiedzZamknieta(int idque) {
+		System.out.println("Wyszukano odpowiedzZamknieta");
+		return manager.find(OdpowiedzZamknieta.class, idque);
+	}
+
+	public List<OdpowiedzZamknieta> getOdpowiedzZamknieta() {
+		Query q = manager.createQuery("select z from OdpowiedzZamknieta z");
+		@SuppressWarnings("unchecked")
+		List<OdpowiedzZamknieta> list = q.getResultList();
+		System.out.println("Zwrocono odpowiedzi zamkniete");
+		return list;
+	}
+
+	public void updateOdpowiedzZamknieta(OdpowiedzZamknieta odpowiedzZamknieta) {
+		odpowiedzZamknieta = manager.merge(odpowiedzZamknieta);
+		System.out.println("Aktualizowano odpowiedzZamknieta");
+	}
+
+	public void deleteOdpowiedzZamknieta(int idque) {
+		OdpowiedzZamknieta odpowiedzZamknieta = manager.find(OdpowiedzZamknieta.class, idque);
+		manager.remove(odpowiedzZamknieta);
+		System.out.println("Usunieto odpowiedzZamknieta");
+	}
+
 	
 }
