@@ -9,7 +9,8 @@
 		<class>pl.ankiety.Przedmiot</class>
 		<class>pl.ankiety.MozliwaOdpowiedz</class>
 		<class>pl.ankiety.Pytanie</class>
-		<!--<class>pl.ankiety.Pytanie2</class>-->
+		<class>pl.ankiety.ListaOdpowiedziZamknietych</class>
+		<class>pl.ankiety.OdpowiedzZamknieta</class>
 
 		<properties>
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
