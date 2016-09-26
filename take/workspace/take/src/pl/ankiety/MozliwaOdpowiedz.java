@@ -16,7 +16,6 @@ public class MozliwaOdpowiedz implements Serializable {
 	int idm;
 	String tresc;
 	Pytanie pytanie;
-    Przedmiot przedmiot;
 	
 	@Id
 	@GeneratedValue
@@ -45,11 +44,4 @@ public class MozliwaOdpowiedz implements Serializable {
 		this.pytanie = pytanie;
 	}
 
-    public Przedmiot getPrzedmiot() {
-        return przedmiot;
-    }
-
-    public void setPrzedmiot(Przedmiot przedmiot) {
-        this.przedmiot = przedmiot;
-    }
 }

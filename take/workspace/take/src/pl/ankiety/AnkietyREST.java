@@ -106,14 +106,12 @@ public class AnkietyREST implements Ankiety {
 	
 	@Override
 	@GET
-	@Path("/createMozliwaOdpowiedz/{tresc}/{idque}/{idp}")
-	public String createMozliwaOdpowiedz(@PathParam("tresc") String tresc, @PathParam("idque") int idque, @PathParam("idp") int idp) {
+	@Path("/createMozliwaOdpowiedz/{tresc}/{idque}")
+	public String createMozliwaOdpowiedz(@PathParam("tresc") String tresc, @PathParam("idque") int idque) {
 		MozliwaOdpowiedz mozliwaOdpowiedz = new MozliwaOdpowiedz();
 		mozliwaOdpowiedz.setTresc(tresc);
 		Pytanie pytanie = bean.findPytanie(idque);
 		mozliwaOdpowiedz.setPytanie(pytanie);
-		Przedmiot przedmiot = bean.findPrzedmiot(idp);
-		mozliwaOdpowiedz.setPrzedmiot(przedmiot);
 		bean.createMozliwaOdpowiedz(mozliwaOdpowiedz);
 		return "dodano mozliwa odpowiedz";
 	}
@@ -152,11 +150,13 @@ public class AnkietyREST implements Ankiety {
 
 	@Override
 	@GET
-	@Path("/createPytanie/{typ}/{tresc}")
-	public String createPytanie(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
+	@Path("/createPytanie/{typ}/{tresc}/{idp}")
+	public String createPytanie(@PathParam("typ") String typ, @PathParam("tresc") String tresc, @PathParam("idp") int idp) {
 		Pytanie pytanie = new Pytanie();
 		pytanie.setTyp(typ);
 		pytanie.setTresc(tresc);
+        Przedmiot przedmiot = bean.findPrzedmiot(idp);
+        pytanie.setPrzedmiot(przedmiot);
 		bean.createPytanie(pytanie);
 		return "dodano pytanie";
 	}
