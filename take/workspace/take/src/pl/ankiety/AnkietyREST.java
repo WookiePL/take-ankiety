@@ -152,7 +152,7 @@ public class AnkietyREST implements Ankiety {
 
 	@Override
 	@GET
-	@Path("/createPytanie/{typ}/{tresc}/{idp}")
+	@Path("/createPytanie/{typ}/{tresc}")
 	public String createPytanie(@PathParam("typ") String typ, @PathParam("tresc") String tresc) {
 		Pytanie pytanie = new Pytanie();
 		pytanie.setTyp(typ);
