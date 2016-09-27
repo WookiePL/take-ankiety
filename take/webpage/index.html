@@ -20,11 +20,26 @@
 
 <h3>Pytania</h3>
 <div id="questions"></div>
-<input type="text" name="questionName" class="questionName"><select class="questionType"></select><label><input type="checkbox" class="closed">Pytanie zamkniete</label>
+<input type="text" name="questionName" class="questionName"><label><input type="checkbox" class="closed">Pytanie zamkniete</label>
 <span class="addQuestion">Dodaj</span>
+
+<hr>
+
+<h3>Listy Odpowiedzi Pytan Zamknietych</h3>
+<div id="closedAnswersList"></div>
+<select class="closedAnswersList"></select><span class="addClosedAnswersList">Dodaj</span>
+
+<hr>
+
+<h3>Odpowiedzi Pytan Zamknietych</h3>
+<div id="closedAnswers"></div>
+<input type="text" name="closedAnswers" class="closedAnswers"><select class="closedAnswersFromList"></select><span class="addClosedAnswers">Dodaj</span>
 
 <script src="jquery-3.1.0.min.js"></script>
 <script>
+
+
+// Teachers
 
 	function bindTeachersRemovers() {
 		$('.teacherRemover').click(function(){
@@ -88,7 +103,7 @@
 		});
 	});
 	
-	
+// Subjects	
 
 	function bindSubjectsRemovers() {
 		$('.subjectRemover').click(function(){
@@ -153,7 +168,7 @@
 		});
 	});
 	
-	
+// Ansewrs
 
 	function bindAnswerRemovers() {
 		$('.answerRemover').click(function(){
@@ -169,7 +184,8 @@
 				$('#answers').empty();
 				answerList();
 			});
-		});
+		})
+		;
 	}
 	
 	function answerList() {
@@ -214,8 +230,8 @@
 		});
 	});
 	
+// Questions
 	
-
 	function bindQuestionsRemovers() {
 		$('.questionRemover').click(function(){
 			var idw = $(this).attr('idque');
@@ -228,6 +244,7 @@
 			})
 			.done(function() {
 				$('#questions').empty();
+				$('.closedAnswersList').empty();
 				questionsList();
 			});
 		});
@@ -253,6 +270,7 @@
 					$('#questions').append('<td>' + parsedObj[value][ivalue]['przedmiot']['nazwa'] + '</td>');
 					$('#questions').append('<td><span class="questionRemover" idque="' + parsedObj[value][ivalue]['idque'] + '">Usun</span></td>');
 					$('#questions').append('</tr>');
+					$('.closedAnswersList').append('<option idque="' + parsedObj[value][ivalue]['idque'] + '">' + parsedObj[value][ivalue]['tresc'] + '</option>');
 				};
 			};
 			$('#questions').append('</table>');
@@ -278,10 +296,139 @@
 		});
 	});
 	
+// Closed List
+
+	function bindClosedListRemovers() {
+		$('.answerRemover').click(function(){
+			var idl = $(this).attr('idl');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deleteListaOdpowiedziZamknietych/" + idl,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#closedAnswersList').empty();
+				closedList();
+			});
+		})
+		;
+	}
+	
+	function closedList() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getListyOdpowiedziZamknietych",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#closedAnswersList').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#closedAnswersList').append('<tr>');
+					$('#closedAnswersList').append('<td>' + parsedObj[value][ivalue]['pytanie']['tresc'] + '</td>');
+					$('#closedAnswersList').append('<td><span class="answerRemover" idl="' + parsedObj[value][ivalue]['idl'] + '">Usun</span></td>');
+					$('#closedAnswersList').append('</tr>');
+					$('.closedAnswersFromList').append('<option idl="' + parsedObj[value][ivalue]['idl'] + '">' + parsedObj[value][ivalue]['pytanie']['tresc'] + '</option>')
+				};
+			};
+			$('#closedAnswersList').append('</table>');
+			bindClosedListRemovers();
+		});
+		
+	}
+	
+	$('.addClosedAnswersList').click(function() {
+		var questionFromForm = $('.closedAnswersList option:selected').attr('idque');
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createListaOdpowiedziZamknietych/" + questionFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#closedAnswersList').empty();
+			closedList();
+		});
+	});
+	
+// Closed Ansewrs	
+
+	function bindClosedAnswersRemovers() {
+		$('.subjectRemover').click(function(){
+			var idz = $(this).attr('idz');
+			
+			$.ajax({
+			url: "http://localhost:8080/take/ankiety/deleteOdpowiedzZamknieta/" + idz,
+			beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+			}
+			})
+			.done(function() {
+				$('#closedAnswers').empty();
+				closedAnswers();
+			});
+		});
+	}
+	
+	function closedAnswers() {
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/getOdpowiedziZamkniete",
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function( data ) {
+
+			var parsedObj = JSON.parse(data);
+
+			$('#closedAnswers').append('<table>');
+			for (var value in parsedObj) {
+				for (var ivalue in parsedObj[value]) {
+					$('#closedAnswers').append('<tr>');
+					$('#closedAnswers').append('<td>' + parsedObj[value][ivalue]['listaOdpowiedziZamknietych']['idl'] + '</td>');
+					$('#closedAnswers').append('<td>' + parsedObj[value][ivalue]['listaOdpowiedziZamknietych']['pytanie'] + '</td>');
+					$('#closedAnswers').append('<td><span class="subjectRemover" idz="' + parsedObj[value][ivalue]['idz'] + '">Usun</span></td>');
+					$('#closedAnswers').append('</tr>');
+
+				};
+			};
+			$('#closedAnswers').append('</table>');
+			bindClosedAnswersRemovers();
+		});
+		
+	}
+	
+	$('.addClosedAnswers').click(function() {
+		var closedAnswer = $('.closedAnswers').val();
+		var listFromForm = $('.closedAnswersFromList option:selected').attr('idl');
+		
+		$.ajax({
+		url: "http://localhost:8080/take/ankiety/createOdpowiedzZamknieta/" + closedAnswer + "/" + listFromForm,
+		beforeSend: function( xhr ) {
+		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+		}
+		})
+		.done(function() {
+			$('#closedAnswers').empty();
+			closedAnswers();
+		});
+	});
+	
 
 	teacherList();
 	subjectsList();
 	answerList();
 	questionsList();
+	closedList();
+	closedAnswers();
 
 </script>
