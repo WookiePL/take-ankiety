@@ -205,7 +205,7 @@ public class AnkietyREST implements Ankiety {
         Pytanie pytanie = bean.findPytanie(idl);
         listaOdpowiedziZamknietych.setPytanie(pytanie);
         bean.createListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
-        return "dodano listaOdpowiedziZamknietych";
+        return "dodano lista odpowiedzi zamknietych";
     }
 
     @Override
@@ -249,7 +249,7 @@ public class AnkietyREST implements Ankiety {
         ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
         odpowiedzZamknieta.setListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
         bean.createOdpowiedzZamknieta(odpowiedzZamknieta);
-        return "dodano odpowiedzZamknieta";
+        return "dodano odpowiedz zamknieta";
     }
 
     @Override
@@ -277,7 +277,7 @@ public class AnkietyREST implements Ankiety {
     @Produces("application/json")
     public String deleteOdpowiedzZamknieta(@PathParam("idz") int idz) {
         bean.deleteOdpowiedzZamknieta(idz);
-		return "usunieto odpowiedzZamknieta";
+		return "usunieto odpowiedz zamknieta";
     }
 
 

@@ -86,11 +86,11 @@ public class AnkietyEJB {
 	
 	public void createOdpowiedzOtwarta(OdpowiedzOtwarta odpowiedzOtwarta) {
 		manager.persist(odpowiedzOtwarta);
-		System.out.println("Utworzono mozliwa odpowiedz");
+		System.out.println("Utworzono odpowiedzOtwarta");
 	}
 	
 	public OdpowiedzOtwarta findOdpowiedzOtwarta(int idm) {
-		System.out.println("Wyszukano mozliwa odpowiedz");
+		System.out.println("Wyszukano odpowiedzOtwarta");
 		return manager.find(OdpowiedzOtwarta.class, idm);
 	}
 	
@@ -98,19 +98,19 @@ public class AnkietyEJB {
 		Query q = manager.createQuery("select m from OdpowiedzOtwarta m");
 		@SuppressWarnings("unchecked")
 		List<OdpowiedzOtwarta> list = q.getResultList();
-		System.out.println("Zwrocono mozliwe odpowiedzi");
+		System.out.println("Zwrocono odpowiedzOtwarta");
 		return list;
 	}
 	
 	public void updateOdpowiedzOtwarta(OdpowiedzOtwarta odpowiedzOtwarta) {
 		odpowiedzOtwarta = manager.merge(odpowiedzOtwarta);
-		System.out.println("Aktualizowano mozliwa odpowiedz");
+		System.out.println("Aktualizowano odpowiedzOtwarta");
 	}
 	
 	public void deleteOdpowiedzOtwarta(int idm) {
 		OdpowiedzOtwarta odpowiedzOtwarta = manager.find(OdpowiedzOtwarta.class, idm);
 		manager.remove(odpowiedzOtwarta);
-		System.out.println("Usunieto mozliwa odpowiedz");
+		System.out.println("Usunieto odpowiedzOtwarta");
 	}
 	
 /*****************************************************************************************	
