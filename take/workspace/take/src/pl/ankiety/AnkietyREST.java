@@ -102,47 +102,47 @@ public class AnkietyREST implements Ankiety {
 	}
 	
 /*****************************************************************************************	
- * MozliwaOdpowiedz
+ * OdpowiedzOtwarta
  ****************************************************************************************/
 	
 	
 	@Override
 	@GET
-	@Path("/createMozliwaOdpowiedz/{tresc}/{idque}")
-	public String createMozliwaOdpowiedz(@PathParam("tresc") String tresc, @PathParam("idque") int idque) {
-		MozliwaOdpowiedz mozliwaOdpowiedz = new MozliwaOdpowiedz();
-		mozliwaOdpowiedz.setTresc(tresc);
+	@Path("/createOdpowiedzOtwarta/{tresc}/{idque}")
+	public String createOdpowiedzOtwarta(@PathParam("tresc") String tresc, @PathParam("idque") int idque) {
+		OdpowiedzOtwarta odpowiedzOtwarta = new OdpowiedzOtwarta();
+		odpowiedzOtwarta.setTresc(tresc);
 		Pytanie pytanie = bean.findPytanie(idque);
-		mozliwaOdpowiedz.setPytanie(pytanie);
-		bean.createMozliwaOdpowiedz(mozliwaOdpowiedz);
-		return "dodano mozliwa odpowiedz";
+		odpowiedzOtwarta.setPytanie(pytanie);
+		bean.createOdpowiedzOtwarta(odpowiedzOtwarta);
+		return "dodano odpowiedz otwarta";
 	}
 	
 	@Override
 	@GET
-	@Path("/getMozliweOdpowiedzi")
+	@Path("/getOdpowiedziOtwarte")
 	@Produces("application/json")
-	public MozliweOdpowiedzi getMozliweOdpowiedzi() {
-		List<MozliwaOdpowiedz> lMozliwaOdpowiedz = bean.getMozliwaOdpowiedz();
-		MozliweOdpowiedzi mozliweOdpowiedzi = new MozliweOdpowiedzi(lMozliwaOdpowiedz);
-		return mozliweOdpowiedzi;
+	public OdpowiedziOtwarte getOdpowiedziOtwarte() {
+		List<OdpowiedzOtwarta> lOdpowiedzOtwarta = bean.getOdpowiedzOtwarta();
+		OdpowiedziOtwarte odpowiedziOtwarte = new OdpowiedziOtwarte(lOdpowiedzOtwarta);
+		return odpowiedziOtwarte;
 	}
 	
 	@Override
 	@GET
-	@Path("/findMozliwaOdpowiedz/{idm}")
+	@Path("/findOdpowiedzOtwarta/{idm}")
 	@Produces("application/json")
-	public MozliwaOdpowiedz findMozliwaOdpowiedz(@PathParam("idm") int idm) {
-		MozliwaOdpowiedz mozliwaOdpowiedz = bean.findMozliwaOdpowiedz(idm);
-		return mozliwaOdpowiedz;
+	public OdpowiedzOtwarta findOdpowiedzOtwarta(@PathParam("idm") int idm) {
+		OdpowiedzOtwarta odpowiedzOtwarta = bean.findOdpowiedzOtwarta(idm);
+		return odpowiedzOtwarta;
 	}
 	
 	@Override
 	@GET
-	@Path("/deleteMozliwaOdpowiedz/{idm}")
-	public String deleteMozliwaOdpowiedz(@PathParam("idm") int idm) {
-		bean.deleteMozliwaOdpowiedz(idm);
-		return "usunieto odpowiedz";
+	@Path("/deleteOdpowiedzOtwarta/{idm}")
+	public String deleteOdpowiedzOtwarta(@PathParam("idm") int idm) {
+		bean.deleteOdpowiedzOtwarta(idm);
+		return "usunieto odpowiedz otwarta";
 	}
 
 	

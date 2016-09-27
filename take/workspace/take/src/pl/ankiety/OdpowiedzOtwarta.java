@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class MozliwaOdpowiedz implements Serializable {
+public class OdpowiedzOtwarta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	int idm;

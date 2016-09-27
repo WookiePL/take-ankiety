@@ -37,16 +37,16 @@ public interface Ankiety {
 	
 	
 /*****************************************************************************************	
- * MozliwaOdpowiedz
+ * OdpowiedzOtwarta
  ****************************************************************************************/
 	
-	public abstract String createMozliwaOdpowiedz(String tresc, int ideque);
+	public abstract String createOdpowiedzOtwarta(String tresc, int ideque);
 
-	public abstract MozliwaOdpowiedz findMozliwaOdpowiedz(int idm);
+	public abstract OdpowiedzOtwarta findOdpowiedzOtwarta(int idm);
 
-	public abstract MozliweOdpowiedzi getMozliweOdpowiedzi();
+	public abstract OdpowiedziOtwarte getOdpowiedziOtwarte();
 
-	public abstract String deleteMozliwaOdpowiedz(int idm);
+	public abstract String deleteOdpowiedzOtwarta(int idm);
 	
 	
 /*****************************************************************************************	
