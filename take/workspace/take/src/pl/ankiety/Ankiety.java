@@ -17,7 +17,7 @@ public interface Ankiety {
 
 	public abstract Wykladowcy getWykladowcy();
 
-	public abstract void deleteWykladowca(int idw);
+	public abstract String deleteWykladowca(int idw);
 	
 	//TODO: Obczaic o co chodzi z tym inputSream i zrobic te metody jako post
 	//public abstract String updateWykladowca(InputStream is);
@@ -33,7 +33,7 @@ public interface Ankiety {
 
 	public abstract Przedmioty getPrzedmioty();
 
-	public abstract void deletePrzedmiot(int idp);
+	public abstract String deletePrzedmiot(int idp);
 	
 	
 /*****************************************************************************************	
@@ -46,7 +46,7 @@ public interface Ankiety {
 
 	public abstract MozliweOdpowiedzi getMozliweOdpowiedzi();
 
-	public abstract void deleteMozliwaOdpowiedz(int idm);
+	public abstract String deleteMozliwaOdpowiedz(int idm);
 	
 	
 /*****************************************************************************************	
@@ -59,7 +59,7 @@ public interface Ankiety {
 
 	public abstract Pytania getPytania();
 
-	public abstract void deletePytanie(int idque);
+	public abstract String deletePytanie(int idque);
 
 	
 /*****************************************************************************************	
@@ -72,7 +72,7 @@ public interface Ankiety {
 
 	public abstract ListyOdpowiedziZamknietych getListyOdpowiedziZamknietych();
 
-	public abstract void deleteListaOdpowiedziZamknietych(int idl);
+	public abstract String deleteListaOdpowiedziZamknietych(int idl);
 
 	
 /*****************************************************************************************	
@@ -81,10 +81,10 @@ public interface Ankiety {
 
 	public abstract String createOdpowiedzZamknieta(String tresc, int idl);
 
-	public abstract OdpowiedzZamknieta findOdpowiedzZamknieta(int idque);
+	public abstract OdpowiedzZamknieta findOdpowiedzZamknieta(int idz);
 
 	public abstract OdpowiedziZamkniete getOdpowiedziZamkniete();
 
-	public abstract void deleteOdpowiedzZamknieta(int idque);
+	public abstract String deleteOdpowiedzZamknieta(int idz);
 
 }
