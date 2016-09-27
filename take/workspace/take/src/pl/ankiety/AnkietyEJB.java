@@ -81,36 +81,36 @@ public class AnkietyEJB {
 	}
 	
 /*****************************************************************************************	
- * MozliwaOdpowiedz
+ * OdpowiedzOtwarta
  ****************************************************************************************/
 	
-	public void createMozliwaOdpowiedz(MozliwaOdpowiedz mozliwaOdpowiedz) {
-		manager.persist(mozliwaOdpowiedz);
-		System.out.println("Utworzono mozliwa odpowiedz");
+	public void createOdpowiedzOtwarta(OdpowiedzOtwarta odpowiedzOtwarta) {
+		manager.persist(odpowiedzOtwarta);
+		System.out.println("Utworzono odpowiedzOtwarta");
 	}
 	
-	public MozliwaOdpowiedz findMozliwaOdpowiedz(int idm) {
-		System.out.println("Wyszukano mozliwa odpowiedz");
-		return manager.find(MozliwaOdpowiedz.class, idm);
+	public OdpowiedzOtwarta findOdpowiedzOtwarta(int idm) {
+		System.out.println("Wyszukano odpowiedzOtwarta");
+		return manager.find(OdpowiedzOtwarta.class, idm);
 	}
 	
-	public List<MozliwaOdpowiedz> getMozliwaOdpowiedz() {
-		Query q = manager.createQuery("select m from MozliwaOdpowiedz m");
+	public List<OdpowiedzOtwarta> getOdpowiedzOtwarta() {
+		Query q = manager.createQuery("select m from OdpowiedzOtwarta m");
 		@SuppressWarnings("unchecked")
-		List<MozliwaOdpowiedz> list = q.getResultList();
-		System.out.println("Zwrocono mozliwe odpowiedzi");
+		List<OdpowiedzOtwarta> list = q.getResultList();
+		System.out.println("Zwrocono odpowiedzOtwarta");
 		return list;
 	}
 	
-	public void updateMozliwaOdpowiedz(MozliwaOdpowiedz mozliwaOdpowiedz) {
-		mozliwaOdpowiedz = manager.merge(mozliwaOdpowiedz);
-		System.out.println("Aktualizowano mozliwa odpowiedz");
+	public void updateOdpowiedzOtwarta(OdpowiedzOtwarta odpowiedzOtwarta) {
+		odpowiedzOtwarta = manager.merge(odpowiedzOtwarta);
+		System.out.println("Aktualizowano odpowiedzOtwarta");
 	}
 	
-	public void deleteMozliwaOdpowiedz(int idm) {
-		MozliwaOdpowiedz mozliwaOdpowiedz = manager.find(MozliwaOdpowiedz.class, idm);
-		manager.remove(mozliwaOdpowiedz);
-		System.out.println("Usunieto mozliwa odpowiedz");
+	public void deleteOdpowiedzOtwarta(int idm) {
+		OdpowiedzOtwarta odpowiedzOtwarta = manager.find(OdpowiedzOtwarta.class, idm);
+		manager.remove(odpowiedzOtwarta);
+		System.out.println("Usunieto odpowiedzOtwarta");
 	}
 	
 /*****************************************************************************************	

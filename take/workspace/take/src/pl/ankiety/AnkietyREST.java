@@ -53,8 +53,9 @@ public class AnkietyREST implements Ankiety {
 	@Override
 	@GET
 	@Path("/deleteWykladowca/{idw}")
-	public void deleteWykladowca(@PathParam("idw") int idw) {
+	public String deleteWykladowca(@PathParam("idw") int idw) {
 		bean.deleteWykladowca(idw);
+		return "usunieto wykladowce";
 	}
 	
 /*****************************************************************************************	
@@ -95,51 +96,53 @@ public class AnkietyREST implements Ankiety {
 	@Override
 	@GET
 	@Path("/deletePrzedmiot/{idp}")
-	public void deletePrzedmiot(@PathParam("idp") int idp) {
+	public String deletePrzedmiot(@PathParam("idp") int idp) {
 		bean.deletePrzedmiot(idp);
+		return "usunieto przedmiot";
 	}
 	
 /*****************************************************************************************	
- * MozliwaOdpowiedz
+ * OdpowiedzOtwarta
  ****************************************************************************************/
 	
 	
 	@Override
 	@GET
-	@Path("/createMozliwaOdpowiedz/{tresc}/{idque}")
-	public String createMozliwaOdpowiedz(@PathParam("tresc") String tresc, @PathParam("idque") int idque) {
-		MozliwaOdpowiedz mozliwaOdpowiedz = new MozliwaOdpowiedz();
-		mozliwaOdpowiedz.setTresc(tresc);
+	@Path("/createOdpowiedzOtwarta/{tresc}/{idque}")
+	public String createOdpowiedzOtwarta(@PathParam("tresc") String tresc, @PathParam("idque") int idque) {
+		OdpowiedzOtwarta odpowiedzOtwarta = new OdpowiedzOtwarta();
+		odpowiedzOtwarta.setTresc(tresc);
 		Pytanie pytanie = bean.findPytanie(idque);
-		mozliwaOdpowiedz.setPytanie(pytanie);
-		bean.createMozliwaOdpowiedz(mozliwaOdpowiedz);
-		return "dodano mozliwa odpowiedz";
+		odpowiedzOtwarta.setPytanie(pytanie);
+		bean.createOdpowiedzOtwarta(odpowiedzOtwarta);
+		return "dodano odpowiedz otwarta";
 	}
 	
 	@Override
 	@GET
-	@Path("/getMozliweOdpowiedzi")
+	@Path("/getOdpowiedziOtwarte")
 	@Produces("application/json")
-	public MozliweOdpowiedzi getMozliweOdpowiedzi() {
-		List<MozliwaOdpowiedz> lMozliwaOdpowiedz = bean.getMozliwaOdpowiedz();
-		MozliweOdpowiedzi mozliweOdpowiedzi = new MozliweOdpowiedzi(lMozliwaOdpowiedz);
-		return mozliweOdpowiedzi;
+	public OdpowiedziOtwarte getOdpowiedziOtwarte() {
+		List<OdpowiedzOtwarta> lOdpowiedzOtwarta = bean.getOdpowiedzOtwarta();
+		OdpowiedziOtwarte odpowiedziOtwarte = new OdpowiedziOtwarte(lOdpowiedzOtwarta);
+		return odpowiedziOtwarte;
 	}
 	
 	@Override
 	@GET
-	@Path("/findMozliwaOdpowiedz/{idm}")
+	@Path("/findOdpowiedzOtwarta/{idm}")
 	@Produces("application/json")
-	public MozliwaOdpowiedz findMozliwaOdpowiedz(@PathParam("idm") int idm) {
-		MozliwaOdpowiedz mozliwaOdpowiedz = bean.findMozliwaOdpowiedz(idm);
-		return mozliwaOdpowiedz;
+	public OdpowiedzOtwarta findOdpowiedzOtwarta(@PathParam("idm") int idm) {
+		OdpowiedzOtwarta odpowiedzOtwarta = bean.findOdpowiedzOtwarta(idm);
+		return odpowiedzOtwarta;
 	}
 	
 	@Override
 	@GET
-	@Path("/deleteMozliwaOdpowiedz/{idm}")
-	public void deleteMozliwaOdpowiedz(@PathParam("idm") int idm) {
-		bean.deleteMozliwaOdpowiedz(idm);
+	@Path("/deleteOdpowiedzOtwarta/{idm}")
+	public String deleteOdpowiedzOtwarta(@PathParam("idm") int idm) {
+		bean.deleteOdpowiedzOtwarta(idm);
+		return "usunieto odpowiedz otwarta";
 	}
 
 	
@@ -175,7 +178,7 @@ public class AnkietyREST implements Ankiety {
 	@GET
 	@Path("/findPytanie/{idque}")
 	@Produces("application/json")
-	public Pytanie findPytanie(int idque) {
+	public Pytanie findPytanie(@PathParam("idque") int idque) {
 		Pytanie pytanie = bean.findPytanie(idque);
 		return pytanie;
 	}
@@ -184,9 +187,9 @@ public class AnkietyREST implements Ankiety {
 	@GET
 	@Path("/deletePytanie/{idque}")
 	@Produces("application/json")
-	public void deletePytanie(@PathParam("idque") int idque) {
+	public String deletePytanie(@PathParam("idque") int idque) {
 		bean.deletePytanie(idque);
-
+		return "usunieto pytanie";
 	}
 
 /*****************************************************************************************	
@@ -196,13 +199,13 @@ public class AnkietyREST implements Ankiety {
 
     @Override
     @GET
-    @Path("/createListaOdpowiedziZamknietych/{idque}")
-    public String createListaOdpowiedziZamknietych(@PathParam("idque") int idque) {
+    @Path("/createListaOdpowiedziZamknietych/{idl}")
+    public String createListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
         ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
-        Pytanie pytanie = bean.findPytanie(idque);
+        Pytanie pytanie = bean.findPytanie(idl);
         listaOdpowiedziZamknietych.setPytanie(pytanie);
         bean.createListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
-        return "dodano listaOdpowiedziZamknietych";
+        return "dodano lista odpowiedzi zamknietych";
     }
 
     @Override
@@ -219,7 +222,7 @@ public class AnkietyREST implements Ankiety {
     @GET
     @Path("/findListaOdpowiedziZamknietych/{idl}")
     @Produces("application/json")
-    public ListaOdpowiedziZamknietych findListaOdpowiedziZamknietych(int idl) {
+    public ListaOdpowiedziZamknietych findListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
         ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = bean.findListaOdpowiedziZamknietych(idl);
         return listaOdpowiedziZamknietych;
     }
@@ -228,9 +231,9 @@ public class AnkietyREST implements Ankiety {
     @GET
     @Path("/deleteListaOdpowiedziZamknietych/{idl}")
     @Produces("application/json")
-    public void deleteListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
+    public String deleteListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
         bean.deleteListaOdpowiedziZamknietych(idl);
-
+		return "usunieto liste odpowiedzi zamknietych";
     }
 
 /*****************************************************************************************	
@@ -246,7 +249,7 @@ public class AnkietyREST implements Ankiety {
         ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
         odpowiedzZamknieta.setListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
         bean.createOdpowiedzZamknieta(odpowiedzZamknieta);
-        return "dodano odpowiedzZamknieta";
+        return "dodano odpowiedz zamknieta";
     }
 
     @Override
@@ -261,9 +264,9 @@ public class AnkietyREST implements Ankiety {
 
     @Override
     @GET
-    @Path("/findOdpowiedzZamknieta/{idque}")
+    @Path("/findOdpowiedzZamknieta/{idz}")
     @Produces("application/json")
-    public OdpowiedzZamknieta findOdpowiedzZamknieta(int idz) {
+    public OdpowiedzZamknieta findOdpowiedzZamknieta(@PathParam("idz") int idz) {
         OdpowiedzZamknieta odpowiedzZamknieta = bean.findOdpowiedzZamknieta(idz);
         return odpowiedzZamknieta;
     }
@@ -272,9 +275,9 @@ public class AnkietyREST implements Ankiety {
     @GET
     @Path("/deleteOdpowiedzZamknieta/{idz}")
     @Produces("application/json")
-    public void deleteOdpowiedzZamknieta(@PathParam("idz") int idz) {
+    public String deleteOdpowiedzZamknieta(@PathParam("idz") int idz) {
         bean.deleteOdpowiedzZamknieta(idz);
-
+		return "usunieto odpowiedz zamknieta";
     }
 
 

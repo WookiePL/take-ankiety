@@ -17,7 +17,7 @@ public interface Ankiety {
 
 	public abstract Wykladowcy getWykladowcy();
 
-	public abstract void deleteWykladowca(int idw);
+	public abstract String deleteWykladowca(int idw);
 	
 	//TODO: Obczaic o co chodzi z tym inputSream i zrobic te metody jako post
 	//public abstract String updateWykladowca(InputStream is);
@@ -33,20 +33,20 @@ public interface Ankiety {
 
 	public abstract Przedmioty getPrzedmioty();
 
-	public abstract void deletePrzedmiot(int idp);
+	public abstract String deletePrzedmiot(int idp);
 	
 	
 /*****************************************************************************************	
- * MozliwaOdpowiedz
+ * OdpowiedzOtwarta
  ****************************************************************************************/
 	
-	public abstract String createMozliwaOdpowiedz(String tresc, int ideque);
+	public abstract String createOdpowiedzOtwarta(String tresc, int ideque);
 
-	public abstract MozliwaOdpowiedz findMozliwaOdpowiedz(int idm);
+	public abstract OdpowiedzOtwarta findOdpowiedzOtwarta(int idm);
 
-	public abstract MozliweOdpowiedzi getMozliweOdpowiedzi();
+	public abstract OdpowiedziOtwarte getOdpowiedziOtwarte();
 
-	public abstract void deleteMozliwaOdpowiedz(int idm);
+	public abstract String deleteOdpowiedzOtwarta(int idm);
 	
 	
 /*****************************************************************************************	
@@ -59,7 +59,7 @@ public interface Ankiety {
 
 	public abstract Pytania getPytania();
 
-	public abstract void deletePytanie(int idque);
+	public abstract String deletePytanie(int idque);
 
 	
 /*****************************************************************************************	
@@ -72,7 +72,7 @@ public interface Ankiety {
 
 	public abstract ListyOdpowiedziZamknietych getListyOdpowiedziZamknietych();
 
-	public abstract void deleteListaOdpowiedziZamknietych(int idl);
+	public abstract String deleteListaOdpowiedziZamknietych(int idl);
 
 	
 /*****************************************************************************************	
@@ -81,10 +81,10 @@ public interface Ankiety {
 
 	public abstract String createOdpowiedzZamknieta(String tresc, int idl);
 
-	public abstract OdpowiedzZamknieta findOdpowiedzZamknieta(int idque);
+	public abstract OdpowiedzZamknieta findOdpowiedzZamknieta(int idz);
 
 	public abstract OdpowiedziZamkniete getOdpowiedziZamkniete();
 
-	public abstract void deleteOdpowiedzZamknieta(int idque);
+	public abstract String deleteOdpowiedzZamknieta(int idz);
 
 }
