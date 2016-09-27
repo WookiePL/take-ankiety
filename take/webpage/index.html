@@ -12,16 +12,16 @@
 
 <hr>
 
-<h3>Mozliwe Odpowiedzi</h3>
-<div id="answers"></div>
-<input type="text" name="answerName" class="answerName"><span class="addAnswer">Dodaj</span>
-
-<hr>
-
 <h3>Pytania</h3>
 <div id="questions"></div>
 <input type="text" name="questionName" class="questionName"><label><input type="checkbox" class="closed">Pytanie zamkniete</label>
 <span class="addQuestion">Dodaj</span>
+
+<hr>
+
+<h3>Odpowiedz Otwarta</h3>
+<div id="answers"></div>
+<input type="text" name="answerName" class="answerName"><select class="questionSelect"></select><span class="addAnswer">Dodaj</span>
 
 <hr>
 
@@ -175,7 +175,7 @@
 			var idw = $(this).attr('idm');
 			
 			$.ajax({
-			url: "http://localhost:8080/take/ankiety/deleteMozliwaOdpowiedz/" + idw,
+			url: "http://localhost:8080/take/ankiety/deleteOdpowiedzOtwarta/" + idw,
 			beforeSend: function( xhr ) {
 			xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
 			}
@@ -191,7 +191,7 @@
 	function answerList() {
 	$.ajaxSetup({ cache: false });
 		$.ajax({
-		url: "http://localhost:8080/take/ankiety/getMozliweOdpowiedzi",
+		url: "http://localhost:8080/take/ankiety/getOdpowiedziOtwarte",
 		beforeSend: function( xhr ) {
 		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
 		}
@@ -217,9 +217,10 @@
 	
 	$('.addAnswer').click(function() {
 		var answerFromForm = $('.answerName').val();
+		var questionFromForm = $('.questionSelect option:selected').attr('idque');
 		
 		$.ajax({
-		url: "http://localhost:8080/take/ankiety/createMozliwaOdpowiedz/" + answerFromForm,
+		url: "http://localhost:8080/take/ankiety/createOdpowiedzOtwarta/" + answerFromForm + "/" + questionFromForm,
 		beforeSend: function( xhr ) {
 		xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
 		}
@@ -271,6 +272,7 @@
 					$('#questions').append('<td><span class="questionRemover" idque="' + parsedObj[value][ivalue]['idque'] + '">Usun</span></td>');
 					$('#questions').append('</tr>');
 					$('.closedAnswersList').append('<option idque="' + parsedObj[value][ivalue]['idque'] + '">' + parsedObj[value][ivalue]['tresc'] + '</option>');
+					$('.questionSelect').append('<option idque="' + parsedObj[value][ivalue]['idque'] + '">' + parsedObj[value][ivalue]['tresc'] + '</option>');
 				};
 			};
 			$('#questions').append('</table>');
