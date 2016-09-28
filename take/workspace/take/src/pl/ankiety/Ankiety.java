@@ -19,9 +19,7 @@ public interface Ankiety {
 
 	public abstract String deleteWykladowca(int idw);
 	
-	//TODO: Obczaic o co chodzi z tym inputSream i zrobic te metody jako post
-	//public abstract String updateWykladowca(InputStream is);
-	//public abstract String createWykladowca(InputStream is);
+	public abstract String updateWykladowca(int idw, String imieNazwisko);
 	
 /*****************************************************************************************	
  * Przedmiot
@@ -34,19 +32,23 @@ public interface Ankiety {
 	public abstract Przedmioty getPrzedmioty();
 
 	public abstract String deletePrzedmiot(int idp);
-	
+
+	public abstract String updatePrzedmiot(int idp, String nazwa, int idw);
+
 	
 /*****************************************************************************************	
  * OdpowiedzOtwarta
  ****************************************************************************************/
 	
-	public abstract String createOdpowiedzOtwarta(String tresc, int ideque);
+	public abstract String createOdpowiedzOtwarta(String tresc, int idque);
 
 	public abstract OdpowiedzOtwarta findOdpowiedzOtwarta(int idm);
 
 	public abstract OdpowiedziOtwarte getOdpowiedziOtwarte();
 
 	public abstract String deleteOdpowiedzOtwarta(int idm);
+
+	public abstract String updateOdpowiedzOtwarta(int idm, String tresc, int idque);
 	
 	
 /*****************************************************************************************	
@@ -61,6 +63,8 @@ public interface Ankiety {
 
 	public abstract String deletePytanie(int idque);
 
+	public abstract String updatePytanie(int idque, String typ, String tresc, int idp);
+
 	
 /*****************************************************************************************	
  * ListaOdpowiedziZamknietych
@@ -74,6 +78,8 @@ public interface Ankiety {
 
 	public abstract String deleteListaOdpowiedziZamknietych(int idl);
 
+	public abstract String updateListaOdpowiedziZamknietych(int idl, int idque);
+
 	
 /*****************************************************************************************	
  * OdpowiedzZamknieta
@@ -86,5 +92,7 @@ public interface Ankiety {
 	public abstract OdpowiedziZamkniete getOdpowiedziZamkniete();
 
 	public abstract String deleteOdpowiedzZamknieta(int idz);
+
+	public abstract String updateOdpowiedzZamknieta(int idz, String tresc, int idl);
 
 }

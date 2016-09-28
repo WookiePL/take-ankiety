@@ -57,8 +57,19 @@ public class AnkietyREST implements Ankiety {
 		bean.deleteWykladowca(idw);
 		return "usunieto wykladowce";
 	}
-	
-/*****************************************************************************************	
+
+    @Override
+    @GET
+    @Path("/updateWykladowca/{idw}/{imieNazwisko}")
+    public String updateWykladowca(@PathParam("idw") int idw, @PathParam("imieNazwisko") String imieNazwisko) {
+        Wykladowca wykladowca = new Wykladowca();
+        wykladowca.setIdw(idw);
+        wykladowca.setImieNazwisko(imieNazwisko);
+        bean.updateWykladowca(wykladowca);
+        return "zaktualizowano wykladowce";
+    }
+
+    /*****************************************************************************************
  * Przedmiot
  ****************************************************************************************/
 	
@@ -100,8 +111,20 @@ public class AnkietyREST implements Ankiety {
 		bean.deletePrzedmiot(idp);
 		return "usunieto przedmiot";
 	}
-	
-/*****************************************************************************************	
+
+    @Override
+    @GET
+    @Path("/updatePrzedmiot/{idp}/{nazwa}/{idw}")
+    public String updatePrzedmiot(@PathParam("idp") int idp, @PathParam("nazwa") String nazwa, @PathParam("idw") int idw) {
+        Przedmiot przedmiot = new Przedmiot();
+        przedmiot.setNazwa(nazwa);
+        Wykladowca wykladowca = bean.findWykladowca(idw);
+        przedmiot.setWykladowca(wykladowca);
+        przedmiot.setIdp(idp);
+        bean.updatePrzedmiot(przedmiot);
+        return "zaktualizowano przedmiot";
+    }
+    /*****************************************************************************************
  * OdpowiedzOtwarta
  ****************************************************************************************/
 	
@@ -145,8 +168,19 @@ public class AnkietyREST implements Ankiety {
 		return "usunieto odpowiedz otwarta";
 	}
 
-	
-/*****************************************************************************************	
+    @Override
+    @GET
+    @Path("/updateOdpowiedzOtwarta/{idm}/{tresc}/{idque}")
+    public String updateOdpowiedzOtwarta(@PathParam("idm") int idm, @PathParam("tresc") String tresc, @PathParam("idque") int idque) {
+        OdpowiedzOtwarta odpowiedzOtwarta = new OdpowiedzOtwarta();
+        odpowiedzOtwarta.setTresc(tresc);
+        Pytanie pytanie = bean.findPytanie(idque);
+        odpowiedzOtwarta.setPytanie(pytanie);
+        odpowiedzOtwarta.setIdm(idm);
+        bean.updateOdpowiedzOtwarta(odpowiedzOtwarta);
+        return "zaktualizowano odpowiedz otwarta";
+    }
+    /*****************************************************************************************
  * Pytanie
  ****************************************************************************************/
 	
@@ -192,17 +226,30 @@ public class AnkietyREST implements Ankiety {
 		return "usunieto pytanie";
 	}
 
-/*****************************************************************************************	
+    @Override
+    @GET
+    @Path("/updatePytanie/{idque}/{typ}/{tresc}/{idp}")
+    public String updatePytanie(@PathParam("idque") int idque,@PathParam("typ") String typ, @PathParam("tresc") String tresc, @PathParam("idp") int idp) {
+        Pytanie pytanie = new Pytanie();
+        pytanie.setTyp(typ);
+        pytanie.setTresc(tresc);
+        Przedmiot przedmiot = bean.findPrzedmiot(idp);
+        pytanie.setPrzedmiot(przedmiot);
+        pytanie.setIdque(idque);
+        bean.updatePytanie(pytanie);
+        return "zaktualizowano pytanie";
+    }
+    /*****************************************************************************************
  * ListaOdpowiedziZamknietych
  ****************************************************************************************/
 
 
     @Override
     @GET
-    @Path("/createListaOdpowiedziZamknietych/{idl}")
-    public String createListaOdpowiedziZamknietych(@PathParam("idl") int idl) {
+    @Path("/createListaOdpowiedziZamknietych/{idque}")
+    public String createListaOdpowiedziZamknietych(@PathParam("idque") int idque) {
         ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
-        Pytanie pytanie = bean.findPytanie(idl);
+        Pytanie pytanie = bean.findPytanie(idque);
         listaOdpowiedziZamknietych.setPytanie(pytanie);
         bean.createListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
         return "dodano lista odpowiedzi zamknietych";
@@ -236,7 +283,18 @@ public class AnkietyREST implements Ankiety {
 		return "usunieto liste odpowiedzi zamknietych";
     }
 
-/*****************************************************************************************	
+    @Override
+    @GET
+    @Path("/updateListaOdpowiedziZamknietych/{idl}/{idque}")
+    public String updateListaOdpowiedziZamknietych(@PathParam("idl") int idl, @PathParam("idque") int idque) {
+        ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
+        Pytanie pytanie = bean.findPytanie(idque);
+        listaOdpowiedziZamknietych.setPytanie(pytanie);
+        listaOdpowiedziZamknietych.setIdl(idl);
+        bean.updateListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
+        return "zaktualizowano lista odpowiedzi zamknietych";
+    }
+    /*****************************************************************************************
  * OdpowiedzZamknieta
  ****************************************************************************************/
 
@@ -280,5 +338,16 @@ public class AnkietyREST implements Ankiety {
 		return "usunieto odpowiedz zamknieta";
     }
 
+    @Override
+    @GET
+    @Path("/updateOdpowiedzZamknieta/{idz}/{tresc}/{idl}")
+    public String updateOdpowiedzZamknieta(@PathParam("idz") int idz, @PathParam("tresc") String tresc, @PathParam("idl") int idl) {
+        OdpowiedzZamknieta odpowiedzZamknieta = new OdpowiedzZamknieta();
+        ListaOdpowiedziZamknietych listaOdpowiedziZamknietych = new ListaOdpowiedziZamknietych();
+        odpowiedzZamknieta.setListaOdpowiedziZamknietych(listaOdpowiedziZamknietych);
+        odpowiedzZamknieta.setIdz(idz);
+        bean.updateOdpowiedzZamknieta(odpowiedzZamknieta);
+        return "zaktualizowano odpowiedz zamknieta";
+    }
 
 }
